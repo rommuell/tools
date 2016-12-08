@@ -26,13 +26,13 @@ path = '/home/rm/Documents/master_thesis/data/okvis_output'
 #################################################################################
 # List Matches from okvis output
 # set: path, maxWindow
-if 0:
+if 1:
     execfile( "okvisToMatches.py")
 
 
 #################################################################################
 # openMVG image listing & change intrinsics
-if 0:
+if 1:
     pIntrisics = subprocess.Popen( [OPENMVG_SFM_BIN + '/openMVG_main_SfMInit_ImageListing',
                                     "-i", path,
                                     "-o", path + '/matches',
@@ -69,14 +69,14 @@ if 0: # if camera poses from okvis
 
 
 #################################################################################
-# call openMVG_Compute_Matches to filter machtes / generate graphs
+# call openMVG_Compute_Matches to filter matches / generate graphs
 if 0:
     tic = time.time()
 
     pMatches = subprocess.Popen( [OPENMVG_SFM_BIN + '/openMVG_main_ComputeMatches',
                                   "-i", path + "/matches/sfm_data.json",
                                   "-o", path + '/matches',
-                                  "-n", "FASTCASCADEHASHINGL2",
+                                  "-n", "FASTCASCADEHASHINGL2"
                                   ] )
     pMatches.wait()
     t_matches = time.time() - tic
@@ -91,10 +91,12 @@ if 1:
     if not os.path.exists(reconstruction_dir):
         os.mkdir(reconstruction_dir)
 
-    pRecons = subprocess.Popen( [os.path.join(OPENMVG_SFM_BIN, "openMVG_main_IncrementalSfM"),
-                                 "-i", path + "/matches/sfm_data.json",
-                                 "-m", path + '/matches'
-                                 "-o", reconstruction_dir
+    pRecons = subprocess.Popen( [os.path.join(OPENMVG_SFM_BIN, 'openMVG_main_IncrementalSfM'),
+                                 '-a', '00001550.png',
+                                 '-b', '00001771.png',
+                                 '-i', path + '/matches/sfm_data.json',
+                                 '-m', path + '/matches',
+                                 '-o', reconstruction_dir
                                  ] )
 
 #################################################################################

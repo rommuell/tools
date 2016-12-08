@@ -62,11 +62,10 @@ for k in keyframes:  # iterate over keyframes
         kpFile2 = open('{0}/{1}.kp'.format(path, str(k2).zfill(n_zeros)))
         keypoints2 = csv.DictReader(kpFile2)
 
-        i = 1  # line counter
-
+        i = 0  # line counter
         for row in keypoints1:  # iterate over keypoints of keyframe
 
-            j = 1  # line counter
+            j = 0  # line counter
             for row2 in keypoints2:  # iterate over keypoint in second keypoint file
                 if row['landmarkId'] == row2['landmarkId']:
                     matchBuffer.append((i, j))
@@ -83,13 +82,13 @@ for k in keyframes:  # iterate over keyframes
 
 
         # write buffer to matches file
-        if len(matchBuffer) > 0:
+        if len(matchBuffer) > 10:
             matchWriter.writerow((k_c, k2_c))
             #matchWriter.writerow((keyframes_sorted.index(str(k)), keyframes_sorted.index(str(k2))))
             matchWriter.writerow([len(matchBuffer)])
             for it in matchBuffer:
                 matchWriter.writerow((it[0], it[1]))
-            matchBuffer = []
+        matchBuffer = []
 
         k2_c += 1
 
