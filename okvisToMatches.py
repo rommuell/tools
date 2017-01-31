@@ -7,8 +7,7 @@ import time
 import os
 
 # settings
-path = '/home/rm/Documents/master_thesis/data/okvis_output'
-maxWindow = 18  # for matches listing (number of keyframes)
+path = '/home/rm/Desktop/okvis_output'
 n_zeros = 8
 # end settings
 
@@ -55,8 +54,6 @@ for k in keyframes:  # iterate over keyframes
 
     k2_c = k_c + 1
     for k2 in keyframes[k_c + 1:]:  # iterate over second keyframes
-        if k2_c - k_c > maxWindow:  # speedup
-            break
 
         # open okvis second keypoint file (read)
         kpFile2 = open('{0}/{1}.kp'.format(path, str(k2).zfill(n_zeros)))
@@ -82,13 +79,17 @@ for k in keyframes:  # iterate over keyframes
 
 
         # write buffer to matches file
-        if len(matchBuffer) > 10:
+        if len(matchBuffer) > 7:
             matchWriter.writerow((k_c, k2_c))
             #matchWriter.writerow((keyframes_sorted.index(str(k)), keyframes_sorted.index(str(k2))))
             matchWriter.writerow([len(matchBuffer)])
             for it in matchBuffer:
                 matchWriter.writerow((it[0], it[1]))
-        matchBuffer = []
+            matchBuffer = []
+        else:
+            print( len(matchBuffer) )
+            matchBuffer = []
+            break
 
         k2_c += 1
 

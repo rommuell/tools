@@ -99,7 +99,7 @@ extrList.append('}')
 
 
 # open image list
-with open(path + '/matches/sfm_data.json') as sfmFile:
+with open(path + '/knownposes/matches/sfm_data.json') as sfmFile:
     sfm_list = sfmFile.read().splitlines()
 sfmFile.close()
 
@@ -108,6 +108,6 @@ sfm_list = sfm_list[:len(sfm_list)-4]
 sfm_list.extend(extrList)
 
 # open overwrite image list
-with open(path + '/matches/sfm_data_pose.json', 'w+') as sfmFile:
+with open(path + '/knownposes/matches/sfm_data_pose.json', 'w+') as sfmFile:
     sfmFile.writelines('\n'.join(sfm_list))
 sfmFile.close()
