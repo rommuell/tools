@@ -98,5 +98,96 @@ plot(AD_EP_EA(:,2));
 title('covariance criteria');
 legend('trace', 'determinant');
 
+%% ADELP_EP_EA plot
+
+load('/home/rm/Documents/master_thesis/data/vicon/v1/okvis_output/ADELP_EP_EA.mat')
+
+for c = 1:5
+   ADELP_EP_EA(:,c) =  ADELP_EP_EA(:,c)/max(ADELP_EP_EA(:,c));
+end
+
+figure
+plot(ADELP_EP_EA(:,1:5));
+title('covariance criteria');
+legend('trace', 'determinant', 'max(eig)', 'sum(eig²)', 'P(eig)');
+
+figure
+yyaxis left
+plot(ADELP_EP_EA(:,1));
+
+yyaxis right
+plot(ADELP_EP_EA(:,2));
+title('covariance criteria');
+legend('trace', 'determinant');
+
+figure
+yyaxis left
+plot(ADELP_EP_EA(:,1:2));
+
+yyaxis right
+plot(ADELP_EP_EA(:,6:7));
+title('covariance criteria');
+legend('trace', 'determinant', 'e_{pos}', 'e_{angle}');
+
+
+%% ADELP_Aall_Dall_EP_EA plot
+clc, clear all, close all
+load('/home/rm/Documents/master_thesis/data/vicon/wall_circ/okvis_output/ADELP_Aall_Dall_EP_EA.mat')
+
+for c = 1:7
+   ADELP_Aall_Dall_EP_EA(:,c) =  ADELP_Aall_Dall_EP_EA(:,c)/max(ADELP_Aall_Dall_EP_EA(:,c));
+end
+%ADELP_Aall_Dall_EP_EA(20:end,7) = ADELP_Aall_Dall_EP_EA(20:end,7) * 2e35;
+%ADELP_Aall_Dall_EP_EA(:,6) = ADELP_Aall_Dall_EP_EA(:,6) - mean(ADELP_Aall_Dall_EP_EA(:,6));
+
+a =[1 -1];b=[1];
+int = filter(b,a,ADELP_Aall_Dall_EP_EA(:,6) - mean(ADELP_Aall_Dall_EP_EA(:,6)));
+
+figure
+plot(ADELP_Aall_Dall_EP_EA(:,1:7));
+title('covariance criteria');
+legend('trace', 'determinant', 'max(eig)', 'sum(eig²)', 'P(eig)', 'trace all', 'determinant all');
+
+figure
+yyaxis left
+plot(ADELP_Aall_Dall_EP_EA(:,1));
+
+yyaxis right
+plot(ADELP_Aall_Dall_EP_EA(:,2));
+title('covariance criteria');
+legend('trace', 'determinant');
+
+figure
+yyaxis left
+plot(ADELP_Aall_Dall_EP_EA(:,6));
+
+yyaxis right
+plot(ADELP_Aall_Dall_EP_EA(:,7));
+title('covariance criteria full matrix');
+legend('trace all', 'determinant all');
+
+figure
+yyaxis left
+plot(ADELP_Aall_Dall_EP_EA(:,1:2));
+
+yyaxis right
+plot(ADELP_Aall_Dall_EP_EA(:,8:9));
+title('covariance criteria');
+legend('trace', 'determinant', 'e_{pos}', 'e_{angle}');
+
+figure
+yyaxis left
+plot([ADELP_Aall_Dall_EP_EA(:,6), int]);
+ylim([0,0.5]);
+
+
+yyaxis right
+plot(ADELP_Aall_Dall_EP_EA(:,8:9));
+title('covariance criteria');
+legend('trace all', 'int', 'e_{pos}', 'e_{angle}');
+
+
+
+
 
 

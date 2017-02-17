@@ -19,8 +19,8 @@ def reorder_csv(filename_in, filename_out):
         # output dict needs a list for new column ordering
         fieldnames = ['field.header.stamp', 'field.transform.translation.x', 'field.transform.translation.y',
                       'field.transform.translation.z',
-                      'field.transform.rotation.w', 'field.transform.rotation.x', 'field.transform.rotation.y',
-                      'field.transform.rotation.z',
+                      'field.transform.rotation.x', 'field.transform.rotation.y', 'field.transform.rotation.z',
+                      'field.transform.rotation.w',
                       'field.child_frame_id', '%time', 'field.header.seq', 'field.header.frame_id']
         writer = csv.DictWriter(outfile, fieldnames=fieldnames)
 
@@ -35,9 +35,11 @@ def reorder_csv(filename_in, filename_out):
 # set configuration
 # (place bag in a separate folder)
 
-bag = "/home/rm/Documents/master_thesis/data/vicon/v1/2017-01-26-17-45-35.bag"
-topic = "/camera_imu/vrpn_client/estimated_transform"
+bag = "/home/rm/Documents/master_thesis/data/vicon/wall_circ/wall_circ.bag"
+topic = "/camera_imu/vrpn_client/raw_transform"
 config = "/home/rm/catkin_ws/src/okvis_ros/okvis/config/config_visensor_mono.yaml"
+egm_config = "/home/rm/Documents/master_thesis/src/tools/egm.yaml"
+protocol_template = "/home/rm/Documents/master_thesis/src/tools/protocol.txt"
 
 #######################################################
 
@@ -90,15 +92,27 @@ print
 
 # move okvis output to bag folder
 shutil.move(okvis_output, directory)
+shutil.copy(egm_config, directory)
+
+reconstructions = directory + "/reconstructions"
+if not os.path.exists(reconstructions):
+    os.mkdir(reconstructions)
+
+shutil.copy(protocol_template, reconstructions)
+
+print("for debugging in qt:")
+command = "/home/rm/code/egm/build/main " + "-i " + directory + "/okvis_output " + "-c " + directory +  '/' + os.path.basename(config) + " " + "-g " + csv_file_reordered
+print(command)
 
 
 # run okvis synchronous
-pEval = subprocess.Popen( ["/home/rm/egm/build/main",
+pEval = subprocess.Popen( ["/home/rm/code/egm/build/main",
                            "-i", directory + "/okvis_output",
-                           "-c", config,
+                           "-c", directory +  '/' + os.path.basename(config),
                            "-g", csv_file_reordered,
                             ] )
 pEval.wait()
+
 
 
 
