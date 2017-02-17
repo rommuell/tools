@@ -112,11 +112,3 @@ pEval = subprocess.Popen( ["/home/rm/code/egm/build/main",
                            "-g", csv_file_reordered,
                             ] )
 pEval.wait()
-
-
-
-
-
-
-
-# roslaunch okvis_ros okvis_node_synchronous.launch config:=/home/rm/catkin_ws/src/okvis_ros/okvis/config/config_visensor_mono.yaml bag:=/home/rm/Documents/master_thesis/data/marco/ToF_d1_5Hz.bag
