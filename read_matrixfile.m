@@ -131,7 +131,7 @@ legend('trace', 'determinant', 'e_{pos}', 'e_{angle}');
 
 
 %% ADELP_Aall_Dall_EP_EA plot
-clc, clear all, close all
+%clc, clear all, close all
 load('/home/rm/Documents/master_thesis/data/vicon/wall_circ/okvis_output/ADELP_Aall_Dall_EP_EA.mat')
 
 for c = 1:7
