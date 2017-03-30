@@ -1,0 +1,23 @@
+import sys
+sys.path.append('/opt/ros/indigo/lib/python2.7/dist-packages')
+import rosbag
+import rospy
+
+framerate = 1.5
+
+t_old = rospy.Time(0)
+with rosbag.Bag('/home/rm/Documents/master_thesis/data/vicon_leo/calib_reduced.bag', 'w') as outbag:
+    for topic, msg, t in rosbag.Bag('/home/rm/Documents/master_thesis/data/vicon_leo/2017-03-30-15-53-31.bag').read_messages():
+
+        if topic != "/cam0/image_raw" and topic != "/pegasus/vrpn_client/raw_transform":
+            continue
+
+        if topic != "/cam0/image_raw":
+            outbag.write(topic, msg, msg.header.stamp)
+        else:
+            d = rospy.Duration.from_sec(1/framerate)
+            delta = msg.header.stamp - t_old
+            if delta > d:
+                print("exported image msg")
+                outbag.write(topic, msg, msg.header.stamp)
+                t_old = msg.header.stamp
