@@ -35,8 +35,8 @@ def reorder_csv(filename_in, filename_out):
 # set configuration
 # (place bag in a separate folder)
 
-bag = "/home/rm/Documents/master_thesis/data/vicon/wall_circ/wall_circ.bag"
-topic = "/camera_imu/vrpn_client/raw_transform"
+bag = "/home/rm/Documents/master_thesis/data/vicon_leo/bag1_4/bag1.bag"
+topic = "/pegasus/vrpn_client/raw_transform"
 config = "/home/rm/catkin_ws/src/okvis_ros/okvis/config/config_visensor_mono.yaml"
 egm_config = "/home/rm/Documents/master_thesis/src/tools/egm.yaml"
 protocol_template = "/home/rm/Documents/master_thesis/src/tools/protocol.txt"
@@ -81,7 +81,7 @@ shutil.copy(config, directory)
 command = "roslaunch okvis_ros okvis_node_synchronous.launch " + "config:=" + config + " bag:=" + bag
 print(command)
 pyperclip.copy(command)
-print("paste in terminal")
+print("paste in terminal and confirm to save (y)")
 raw_input('Press Enter')
 print
 # pOkvis = subprocess.Popen( ["roslaunch", "okvis_ros", "okvis_node_synchronous.launch",
@@ -93,6 +93,10 @@ print
 # move okvis output to bag folder
 shutil.move(okvis_output, directory)
 shutil.copy(egm_config, directory)
+
+print("Adjust T_VC in egm config file.")
+raw_input('Press Enter')
+print
 
 reconstructions = directory + "/reconstructions"
 if not os.path.exists(reconstructions):
