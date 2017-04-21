@@ -32,7 +32,7 @@ if 0:
                                  '-i', path,
                                  ])
     pOkToMat.wait()
-#    execfile( "okvisToMatches.py")
+    #    execfile( "okvisToMatches.py")
 t_oktomat = time.time() - tic
 
 #################################################################################

@@ -235,17 +235,17 @@ plot(t_3, ADELP_Aall_Dall_EP_EA_3(:,6));
 plot(t_4, ADELP_Aall_Dall_EP_EA_4(:,6));
 title('trace all')
 
-subplot(3,1,2)
-plot(t_0, ADELP_Aall_Dall_EP_EA_0(:,7));
-hold on
-plot(t_1, ADELP_Aall_Dall_EP_EA_1(:,7));
-plot(t_2, ADELP_Aall_Dall_EP_EA_2(:,7));
-plot(t_3, ADELP_Aall_Dall_EP_EA_3(:,7));
-plot(t_4, ADELP_Aall_Dall_EP_EA_4(:,7));
-title('determinant all')
-ylim([0, 0.5e-244])
+% subplot(3,1,2)
+% plot(t_0, ADELP_Aall_Dall_EP_EA_0(:,7));
+% hold on
+% plot(t_1, ADELP_Aall_Dall_EP_EA_1(:,7));
+% plot(t_2, ADELP_Aall_Dall_EP_EA_2(:,7));
+% plot(t_3, ADELP_Aall_Dall_EP_EA_3(:,7));
+% plot(t_4, ADELP_Aall_Dall_EP_EA_4(:,7));
+% title('determinant all')
+% ylim([0, 0.5e-244])
 
-subplot(3,1,3)
+subplot(3,1,2)
 plot(t_0, ADELP_Aall_Dall_EP_EA_0(:,8));
 hold on
 plot(t_1, ADELP_Aall_Dall_EP_EA_1(:,8));
