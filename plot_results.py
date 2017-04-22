@@ -7,6 +7,7 @@ import sys
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import math
+import os
 
 def ylim_cust(ax):
     ax.grid(True)
@@ -31,14 +32,17 @@ def calc_rms(vec1, vec2):
     acc1 = 0.0
     acc2 = 0.0
     for v1, v2 in zip(vec1, vec2):
-        if v1 != v2:
+        if (v1 != v2) or 1: #peak filter: & ~((v2 - v1) > 0.05)
             acc1 += np.square(v1)
             acc2 += np.square(v2)
             i += 1
-    return [np.sqrt(acc1 / i), np.sqrt(acc2 / i)]
+    if i > 0:
+        return [np.sqrt(acc1 / i), np.sqrt(acc2 / i)]
+    else:
+        return [0, 0]
 
 def s(val):
-    return "%0.6f" % val
+    return "%0.5f" % val
 
 def signum(val):
     if val < 0:
@@ -49,7 +53,7 @@ def signum(val):
 if len(sys.argv) == 2:
     path = sys.argv[1]
 else:
-    path = "/home/rm/Documents/master_thesis/data/vicon_leo/bag1/reconstructions/21-04-2017_01:43:46"
+    path = "/home/rm/Documents/master_thesis/data/vicon_leo/bag1/reconstructions/22-04-2017_23:25:16"
     print("WARNING: internal path is used")
 
 print("data source path: " + path)
@@ -57,8 +61,14 @@ print("data source path: " + path)
 data = np.genfromtxt(path + "/criteriaList.txt", delimiter=' ', names=True)
 optWindow = np.vstack((data["reopt1_optWind"],))
 
-fig, axes = plt.subplots(nrows=5, ncols=2)
+file = open(path + "/readme.txt")
+file.readline()
+duration = float(file.readline())
+file.close()
+
+fig, axes = plt.subplots(nrows=6, ncols=2)
 ax1, ax2, ax3, ax4, ax5, ax6, ax7, ax8, ax9, ax10, ax11, ax12 = axes.flatten()
+plt.suptitle(os.path.basename(path) + " (" + "%0.1f" % duration + "s)")
 
 ax1.set_ylabel('e_pos [m]')
 ax1.plot(data["okvis_e_pos"], label='OKVIS')
@@ -73,7 +83,6 @@ ax2.plot(twopi_filter(data['reopt1_e_angle']))
 rms = calc_rms(data["okvis_e_angle"], data["reopt1_e_angle"])
 ax2.set_title('rms_OKVIS = ' + s(rms[0]) + ", rms_reopt = " + s(rms[1]) + ", delta_rms = " + signum(rms[1] - rms[0]) + s(rms[1] - rms[0]))
 ylim_cust(ax2)
-
 
 ax3.set_ylabel('e_pos_x [m]')
 ax3.plot(data['okvis_e_pos_x'])
