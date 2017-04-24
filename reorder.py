@@ -35,8 +35,8 @@ def reorder_csv(filename_in, filename_out):
 # set configuration
 # (place bag in a separate folder)
 
-bag = "/home/rm/Documents/master_thesis/data/vicon_leo/bag1_4/bag1.bag"
-topic = "/pegasus/vrpn_client/raw_transform"
+bag = "/home/rm/Documents/master_thesis/data/vicon_medium_new/V1_02_medium.bag"
+topic = "/vicon/firefly_sbx/firefly_sbx"
 config = "/home/rm/catkin_ws/src/okvis_ros/okvis/config/config_visensor_mono.yaml"
 egm_config = "/home/rm/Documents/master_thesis/src/tools/egm.yaml"
 protocol_template = "/home/rm/Documents/master_thesis/src/tools/protocol.txt"

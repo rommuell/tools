@@ -32,10 +32,11 @@ def calc_rms(vec1, vec2):
     acc1 = 0.0
     acc2 = 0.0
     for v1, v2 in zip(vec1, vec2):
-        if (v1 != v2) or 1: #peak filter: & ~((v2 - v1) > 0.05)
+        if (v1 != v2) or 0: #peak filter: & ~((v2 - v1) > 0.05)
             acc1 += np.square(v1)
             acc2 += np.square(v2)
             i += 1
+    print(i)
     if i > 0:
         return [np.sqrt(acc1 / i), np.sqrt(acc2 / i)]
     else:
