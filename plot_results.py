@@ -150,9 +150,9 @@ ax12b.set_xlim(0, optWindow.size)
 mng = plt.get_current_fig_manager()
 mng.resize(*mng.window.maxsize())
 
-# comment following line for automatic closing
+# comment/uncomment following 2 lines for automatic closing
 plt.show(fig)
+plt.pause(0.1)
 
-plt.pause(3)
 fig.savefig(path + '/results.png', dpi=400 )
 print("end of plotting")

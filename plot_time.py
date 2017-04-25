@@ -15,10 +15,9 @@ else:
     path = "/home/rm/Documents/master_thesis/data/vicon_leo/bag1/reconstructions/24-04-2017_16:01:45"
     print("WARNING: internal path is used")
 
-path = path + "/time_data.yaml"
-print("data source path: " + path)
+print("data source path: " + path + "/time_data.yaml")
 data=[]
-with open(path) as infile:
+with open(path + "/time_data.yaml") as infile:
     for i in range(1):
         _ = infile.readline()
     #data = yaml.load(infile)
@@ -33,6 +32,7 @@ with open(path) as infile:
 labels = []
 sizes = []
 
+total_time = 0.0
 total_steps = 0.0
 for l in data:
     for key in l:
@@ -40,9 +40,11 @@ for l in data:
             total_steps += l[key]
             labels.append(key)
             sizes.append(l[key])
-        elif (l["total"] - total_steps)/l["total"] > 0.01: #other is more than 1%
-            labels.append("other")
-            sizes.append(l["total"] - total_steps)
+        else:
+            total_time = l["total"]
+            if (l["total"] - total_steps)/l["total"] > 0.01: #other is more than 1%
+                labels.append("other")
+                sizes.append(l["total"] - total_steps)
 
 
 # Pie chart, where the slices will be ordered and plotted counter-clockwise:
@@ -50,6 +52,7 @@ for l in data:
 #explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
 fig1, ax1 = plt.subplots()
+plt.suptitle(os.path.basename(path) + " (" + "%0.1f" % total_time + "s)")
 
 cmap = plt.cm.jet
 colors = cmap([0.1, 0.4, 0.7, 1, 0.4, 0.7, 1])
@@ -57,4 +60,9 @@ ax1.pie(sizes, labels=labels, pctdistance=0.75,
         shadow=False, startangle=90, autopct='%.1f', colors=colors) #explode=explode, autopct='%1.1f%%',
 ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
+mng = plt.get_current_fig_manager()
+mng.resize(*mng.window.maxsize())
+
 plt.show()
+plt.pause(0.1)
+fig1.savefig(path + "/time.png", dpi=400 )
