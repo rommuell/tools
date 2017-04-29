@@ -47,7 +47,7 @@ def s(val):
 
 def signum(val):
     if val < 0:
-        return "-"
+        return ""
     else:
         return "+"
 

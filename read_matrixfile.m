@@ -434,6 +434,18 @@ l = length(a);
 plot((-l+1):(l-1), corr/length(a));
 ylim(y)
 
+%%
+T2=T;
+T2(T2==0)=0.00001;
+figure
+imagesc(T2);
+
+figure
+plot(sum(T,2));
+hold on 
+plot(sum(T,1));
+legend('trace', 'temporal sum over one keyframe')
+
 
 
 
