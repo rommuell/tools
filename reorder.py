@@ -35,13 +35,26 @@ def reorder_csv(filename_in, filename_out):
 # set configuration
 # (place bag in a separate folder)
 
-bag = "/home/rm/Documents/master_thesis/data/vicon_medium_new/MH_01_easy.bag"
-topic = "/vicon/firefly_sbx/firefly_sbx"
-config = "/home/rm/catkin_ws/src/okvis_ros/okvis/config/config_visensor_mono.yaml"
+bag = "/home/rm/Documents/master_thesis/data/sim2/2017-05-02-22-30-28.bag"
+topic = "/firefly/vi_sensor/ground_truth/transform" #ground truth
+img_topic = "/firefly/vi_sensor/left/image_raw"
+imu_topic = "/firefly/vi_sensor/imu"
+config = "/home/rm/catkin_ws_jonathan/src/mvisplanner/interface_mvisp/config/parameter/okvis_visensor_simulation.yaml"
 egm_config = "/home/rm/Documents/master_thesis/src/tools/egm.yaml"
 protocol_template = "/home/rm/Documents/master_thesis/src/tools/protocol.txt"
 
 #######################################################
+
+dirname = os.path.dirname(bag)
+command = "rosrun rosbag topic_renamer.py " + img_topic + " " + bag + " /cam0/image_raw " + dirname + "/temp.bag"
+command += " && rosrun rosbag topic_renamer.py " + imu_topic + " "+ dirname + "/temp.bag" + " /imu0 " + dirname + "/sim.bag"
+command += " && rm " + dirname + "/temp.bag && rm " + bag
+bag = dirname + "/sim.bag"
+print(command)
+pyperclip.copy(command)
+print("paste in terminal")
+raw_input('Press Enter')
+print
 
 okvis_output = "/home/rm/Documents/master_thesis/data/okvis_output"
 if not os.path.exists(okvis_output):

@@ -435,13 +435,14 @@ plot((-l+1):(l-1), corr/length(a));
 ylim(y)
 
 %%
+load('/home/rm/Documents/master_thesis/data/vicon_leo/bag1/reconstructions/29-04-2017_08:57:48/T.mat')
 T2=T;
 T2(T2==0)=0.00001;
 figure
 imagesc(T2);
 
 figure
-plot(sum(T,2));
+plot([sum(T,2)']); %shift by two
 hold on 
 plot(sum(T,1));
 legend('trace', 'temporal sum over one keyframe')

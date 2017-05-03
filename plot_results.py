@@ -54,7 +54,7 @@ def signum(val):
 if len(sys.argv) == 2:
     path = sys.argv[1]
 else:
-    path = "/home/rm/Documents/master_thesis/data/vicon_leo/bag1/reconstructions/22-04-2017_23:25:16"
+    path = "/home/rm/Documents/master_thesis/data/sim/reconstructions/03-05-2017_19:14:16"
     print("WARNING: internal path is used")
 
 print("data source path: " + path)

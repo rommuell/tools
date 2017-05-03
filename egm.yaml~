@@ -6,19 +6,26 @@ T_VC:
      0.016782086191241,  -0.919234424232837,  -0.393352812228914,  -0.128899032632788,
                      0,                   0,                   0,   1.000000000000000]
 
-error_window: 5
+error_window: 30 #size of window for relative error calculation
+
+use_mask: true
+#true, if set true
+
+mask_radius: 30 #in px
 
 #config reoptimization window
+offset: 0
+
 reopts:
-     - {kf_ind1: 110,
-        kf_ind2: 120,
-        overlap: 10,
+     - {kf_ind1: 94, #106, 94
+        kf_ind2: 106, #119, 106
+        overlap: 7,
         method: 2} #0 for incremental, 1 for global, 2 for global with okvis data
 
-#     - {kf_ind1: 30,
-#        kf_ind2: 40,
-#        overlap: 4,
-#        method: 1} #0 for incremental, 1 for global, 2 for global with okvis data
+     - {kf_ind1: 144, #144, 138
+        kf_ind2: 164, #164, 158
+        overlap: 10,
+        method: 2} #0 for incremental, 1 for global, 2 for global with okvis data
 
 #T_rot:
 #    [1, 0, 0, 0,
