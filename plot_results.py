@@ -54,7 +54,7 @@ def signum(val):
 if len(sys.argv) == 2:
     path = sys.argv[1]
 else:
-    path = "/home/rm/Documents/master_thesis/data/sim/reconstructions/03-05-2017_19:14:16"
+    path = "/home/rm/Documents/master_thesis/data/leica_outdoor/24_CAB/reconstructions/14-05-2017_19:17:12"
     print("WARNING: internal path is used")
 
 print("data source path: " + path)
@@ -139,18 +139,24 @@ ax11b.plot(data["A_pos_crit"], 'g', label='trace pos cov matrix')
 ax11b.legend(loc=2)
 ax11b.set_xlim(0, optWindow.size)
 
+#ax12.set_ylabel('')
+#ax12.plot(data["okvis_e_angle"], label='OKVIS angle error')
+#ylim_cust(ax12)
+#ax12b = ax12.twinx()
+#ax12b.plot(data["A_angle_crit"], 'g', label='trace angle cov matrix')
+#ax12b.legend(loc=2)
+#ax12b.set_xlim(0, optWindow.size)
+
 ax12.set_ylabel('')
-ax12.plot(data["okvis_e_angle"], label='OKVIS angle error')
+ax12.plot(data["okvisIn_e_abs_pos"], label='OKVIS pose(in) abs error')
+ax12.plot(data["okvisOut_e_abs_pos"], label='OKVIS pose(out) abs error')
+ax12.plot(data["reopt1_e_abs_pos"], label='reopt pose abs error')
 ylim_cust(ax12)
-ax12b = ax12.twinx()
-ax12b.plot(data["A_angle_crit"], 'g', label='trace angle cov matrix')
-ax12b.legend(loc=2)
-ax12b.set_xlim(0, optWindow.size)
 
 mng = plt.get_current_fig_manager()
 mng.resize(*mng.window.maxsize())
 
-# comment/uncomment following 2 lines for automatic closing
+# comment/uncomment following 2 lines for automatic closing (p. e. when running in a loop)
 plt.show(fig)
 plt.pause(0.1)
 
