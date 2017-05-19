@@ -435,7 +435,7 @@ plot((-l+1):(l-1), corr/length(a));
 ylim(y)
 
 %%
-load('/home/rm/Documents/master_thesis/data/vicon_leo/bag1/reconstructions/29-04-2017_08:57:48/T.mat')
+%load('/home/rm/Documents/master_thesis/data/vicon_leo/bag1/reconstructions/29-04-2017_08:57:48/T.mat')
 T2=T;
 T2(T2==0)=0.00001;
 figure
