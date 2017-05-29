@@ -442,7 +442,7 @@ figure
 imagesc(T2);
 
 figure
-plot([sum(T,2)']); %shift by two
+plot([zeros(1,6), sum(T,2)']); %shift by two
 hold on 
 plot(sum(T,1));
 legend('trace', 'temporal sum over one keyframe')

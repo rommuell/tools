@@ -2,29 +2,32 @@ import numpy as np
 import os
 import csv
 
-directory = "/home/rm/Documents/master_thesis/blender/imgs5/dataset"
+directory = "/home/rm/Documents/master_thesis/blender/laborit_away/2"
 # images in directory/cam0
 # poses.csv (from rosbag: rostopic echo -b poses.bag -p /firefly/vi_sensor/ground_truth/pose >poses.csv)
-# imu.csv (from rosbag: rostopic echo -b poses.bag /firefly/vi_sensor/imu >poses.csv)
+# imu.csv (from rosbag: rostopic echo -b poses.bag -p /firefly/vi_sensor/imu >imu.csv)
+if 1:
+    # renaming imgs
+    data = np.genfromtxt(directory + "/poses.csv", delimiter=',', names=True)
+    img_list = os.listdir(directory + "/cam0")
+    #img_list.sort()
+    #img_list = sorted(img_list, key = lambda x: int(x.split(".")[0]))
+    img_list = sorted(img_list, key = lambda x: int(x.split(".")[0][5:])) #in case of prename Image (Image0001.png)
 
-# renaming imgs
-data = np.genfromtxt(directory + "/poses.csv", delimiter=',', names=True)
-img_list = os.listdir(directory + "/cam0")
-#img_list.sort()
-img_list = sorted(img_list, key = lambda x: int(x.split(".")[0]))
 
-i = 0;
-j = 0;
-for time in data["time"]:
-    filename = img_list[j]
-    filename_t = filename[:-4]
-    i_filename = int(filename_t)
-    if (i + 1 == i_filename):
-        os.rename(directory +"/cam0/" + filename, directory +"/cam0/" + str(int(time)) + ".png")
-        j += 1
-        if (j >= img_list.__len__()):
-            break
-    i += 1
+    i = 0;
+    j = 0;
+    for time in data["time"]:
+        filename = img_list[j]
+        filename_t = filename[:-4]
+        #i_filename = int(filename_t)
+        i_filename = int(filename_t[5:]) #in case of prename Image (Image0001.png)
+        if (i + 1 == i_filename):
+            os.rename(directory +"/cam0/" + filename, directory +"/cam0/" + str(int(time)) + ".png")
+            j += 1
+            if (j >= img_list.__len__()):
+                break
+        i += 1
 
 #creating imu0.csv with imu data
 with open(directory + "/imu.csv", 'rb') as inFile, open(directory + "/imu0.csv", 'wb') as outFile:

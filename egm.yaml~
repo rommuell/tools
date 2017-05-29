@@ -1,15 +1,15 @@
 %YAML:1.0
 
 T_VC:
+        [ 0, 0, 1, 0,
+          -1, 0, 0, 0,
+          0,-1, 0, 0,
+          0, 0, 0, 1]
+
+T_CP:
     [ 1, 0, 0, 0,
       0, 1, 0, 0,
       0, 0, 1, 0,
-      0, 0, 0, 1]
-
-T_CP:
-    [ 1, 0, 0, 0.055,
-      0, 1, 0, 0.04,
-      0, 0, 1, -0.01,
       0, 0, 0, 1]
 
 error_window: 5 #size of window for relative error calculation
@@ -19,9 +19,13 @@ use_mask: true
 
 mask_radius: 30 #in px
 
-gt_dim: 3 #ground truth dimension
+gt_dim: 6 #ground truth dimension
 alg_kf: 12 #number of aligned keyframes in case of 3D ground truth
 time_offset: 0.0 #time offset between camera/imu and leica ground truth (t_cam_new = t_cam - time_offset)
+
+depth_img_path: /home/rm/Documents/master_thesis/blender/imgs7/depth
+evaluate: true
+show_evaluation: false
 
 #config reoptimization window
 offset: 2
@@ -30,9 +34,9 @@ use_thresholder: true
 #true, only if set true
 
 reopts:
-     - {kf_ind1: 94, #106, 94
-        kf_ind2: 111, #119, 106
-        overlap: 7,
+     - {kf_ind1: 64, #106, 94
+        kf_ind2: 84, #119, 106
+        overlap: 10,
         method: 2} #0 for incremental, 1 for global, 2 for global with okvis data
 
 #     - {kf_ind1: 138, #144, 138

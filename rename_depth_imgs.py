@@ -2,7 +2,7 @@ import numpy as np
 import os
 import csv
 
-directory = "/home/rm/Documents/master_thesis/blender/imgs5"
+directory = "/home/rm/Documents/master_thesis/blender/laborit_away/2"
 # images in directory/depth
 # poses.csv (from rosbag: rostopic echo -b poses.bag -p /firefly/vi_sensor/ground_truth/pose >poses.csv)
 
