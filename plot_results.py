@@ -182,8 +182,8 @@ mng = plt.get_current_fig_manager()
 mng.resize(*mng.window.maxsize())
 
 # comment/uncomment following 2 lines for automatic closing (p. e. when running in a loop)
-plt.show(fig)
-#plt.pause(0.1)
+#plt.show(fig)
+plt.pause(0.1)
 
 fig.savefig(path + '/results.png', dpi=400 )
 print("end of plotting")

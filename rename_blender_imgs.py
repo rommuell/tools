@@ -10,9 +10,8 @@ if 1:
     # renaming imgs
     data = np.genfromtxt(directory + "/poses.csv", delimiter=',', names=True)
     img_list = os.listdir(directory + "/cam0")
-    #img_list.sort()
-    #img_list = sorted(img_list, key = lambda x: int(x.split(".")[0]))
-    img_list = sorted(img_list, key = lambda x: int(x.split(".")[0][5:])) #in case of prename Image (Image0001.png)
+    img_list = sorted(img_list, key = lambda x: int(x.split(".")[0]))
+    #img_list = sorted(img_list, key = lambda x: int(x.split(".")[0][5:])) #in case of prename Image (Image0001.png)
 
 
     i = 0;
@@ -20,8 +19,8 @@ if 1:
     for time in data["time"]:
         filename = img_list[j]
         filename_t = filename[:-4]
-        #i_filename = int(filename_t)
-        i_filename = int(filename_t[5:]) #in case of prename Image (Image0001.png)
+        i_filename = int(filename_t)
+        #i_filename = int(filename_t[5:]) #in case of prename Image (Image0001.png)
         if (i + 1 == i_filename):
             os.rename(directory +"/cam0/" + filename, directory +"/cam0/" + str(int(time)) + ".png")
             j += 1

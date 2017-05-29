@@ -3,6 +3,7 @@ from glob import glob
 import os
 import matplotlib.pyplot as plt
 import math
+import plot_time
 
 PI = math.pi
 
@@ -30,16 +31,21 @@ abs_a_first = []
 rms_abs_p_all = []
 rms_pos_abs_p_all_scaled = []
 
+rec_paths = []
+c = 0
 for x in range(i, i + N):
     path_reopt = glob(path + str(x) + "/reconstructions/" + "*/")[0]
+    rec_paths.append(path_reopt)
 
     j = 0
+
     path_eval = path_reopt + "evaluation" + str(j)
     while (os.path.exists(path_eval)):
         data_ok = np.genfromtxt(path_eval + "/okvis/overview.txt", delimiter=' ', names=True)
         data_re = np.genfromtxt(path_eval + "/reopt/overview.txt", delimiter=' ', names=True)
         data_bla = np.genfromtxt("/home/rm/Documents/master_thesis/data/blender/laborit_away2/l_15/reconstructions/29-05-2017_14:42:26/criteriaList.txt", delimiter=' ', names=True)
         j = j + 1
+        c += 1
         path_eval = path_reopt + "evaluation" + str(j)
 
         median_reproj_err_ok.append(data_ok["median_reproj_err"])
@@ -105,5 +111,18 @@ ax.legend('reopt')
 plt.axhline(y=100, xmin=0, xmax=10, linewidth=2, color = 'green')
 ylims = ax.get_ylim()
 ax.set_ylim((0, ylims[1]))
+
+sizes, labels, total_t = plot_time.import_time_data(rec_paths)
+sizes[:] = [s / c for s in sizes]
+total_t = total_t / c
+
+fig1, ax1 = plt.subplots()
+plt.suptitle(os.path.basename(path) + " (" + "%0.1f" % total_t + "s)")
+
+cmap = plt.cm.jet
+colors = cmap([0.1, 0.4, 0.7, 1, 0.4, 0.7, 1])
+ax1.pie(sizes, labels=labels, pctdistance=0.75, autopct=plot_time.make_autopct(sizes),
+        shadow=False, startangle=90, colors=colors)  # explode=explode, autopct='%1.1f%%', autopct='%.1f'
+ax1.axis('equal')
 
 plt.show()
