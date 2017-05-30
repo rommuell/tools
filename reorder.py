@@ -51,14 +51,56 @@ def reorder_csv_6D(filename_in, filename_out):
 # run roscore in terminal seperately
 ###
 bags = []
-egms = []
+egms = [] #list containing list of paths to egms files which should be applied to same okvis run
+egms_per_ok =[]
 directory_0s =[]
 poses_gts = []
 
 bags.append("/home/rm/Documents/master_thesis/blender/laborit_away/2/laborit2_away_bl.bag")
-directory_0s.append("/home/rm/Documents/master_thesis/data/blender/laborit_away2_25/l_")
-egms.append("/home/rm/Documents/master_thesis/data/blender/laborit_away2_25/egm.yaml")
-poses_gts.append("/home/rm/Documents/master_thesis/data/blender/laborit_away2_25/poses.csv")
+directory_0s.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/l_")
+poses_gts.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/poses.csv")
+
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_0.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_1.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_2.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_3.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_4.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_5.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_6.yaml")
+egms.append(egms_per_ok)
+
+
+
+bags.append("/home/rm/Documents/master_thesis/blender/laborit/3/laborit3_bl.bag")
+directory_0s.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/l_")
+poses_gts.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/poses.csv")
+
+egms_per_ok = []
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_0.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_1.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_2.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_3.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_4.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_5.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_6.yaml")
+egms.append(egms_per_ok)
+
+
+
+bags.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/exp7_cut.bag")
+directory_0s.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/l_")
+poses_gts.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/poses.csv")
+
+egms_per_ok = []
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_0.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_1.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_2.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_3.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_4.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_5.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_6.yaml")
+egms.append(egms_per_ok)
+
 
 for e in range(0, bags.__len__()):
     ######################################################
@@ -83,7 +125,6 @@ for e in range(0, bags.__len__()):
     imu_topic = "/firefly/vi_sensor/imu"
 
     config = "/home/rm/catkin_ws/src/okvis_ros/okvis/config/config_blender.yaml"
-    egm_config = egms[e]
     protocol_template = "/home/rm/Documents/master_thesis/src/tools/protocol.txt"
 
 
@@ -174,27 +215,31 @@ for e in range(0, bags.__len__()):
 
         # move okvis output to bag folder
         shutil.move(okvis_output, directory)
-        shutil.copy(egm_config, directory)
 
-        print("Adjust T_VC in egm config file.")
-        #raw_input('Press Enter')
-        #print
+        egm_configs = egms[e]
+        for egm_config in egm_configs:
 
-        reconstructions = directory + "/reconstructions"
-        if not os.path.exists(reconstructions):
-            os.mkdir(reconstructions)
+            shutil.copy(egm_config, directory + "/egm.yaml")
 
-        shutil.copy(protocol_template, reconstructions)
+            print("Adjust T_VC in egm config file.")
+            #raw_input('Press Enter')
+            #print
 
-        print("for debugging in qt:")
-        command = "/home/rm/code/egm/build/main " + "-i " + directory + "/okvis_output " + "-c " + config + " " + "-g " + csv_file_reordered
-        print(command)
+            reconstructions = directory + "/reconstructions"
+            if not os.path.exists(reconstructions):
+                os.mkdir(reconstructions)
+
+            shutil.copy(protocol_template, reconstructions)
+
+            print("for debugging in qt:")
+            command = "/home/rm/code/egm/build/main " + "-i " + directory + "/okvis_output " + "-c " + config + " " + "-g " + csv_file_reordered
+            print(command)
 
 
-        # run egm
-        pEval = subprocess.Popen( ["/home/rm/code/egm/build/main",
-                                   "-i", directory + "/okvis_output",
-                                   "-c", directory +  '/' + os.path.basename(config),
-                                   "-g", csv_file_reordered,
-                                    ] )
-        pEval.wait()
+            # run egm
+            pEval = subprocess.Popen( ["/home/rm/code/egm/build/main",
+                                       "-i", directory + "/okvis_output",
+                                       "-c", directory +  '/' + os.path.basename(config),
+                                       "-g", csv_file_reordered,
+                                        ] )
+            pEval.wait()
