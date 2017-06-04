@@ -36,7 +36,7 @@ PI = math.pi
 if len(sys.argv) == 2:
     path = sys.argv[1]
 else:
-    path = "/media/rm/9480CE0280CDEB36/experiments/laborit_away2_0/l_1/reconstructions/30-05-2017_00:21:50/evaluation0"
+    path = "/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/l_0/reconstructions/02-06-2017_20:52:23/evaluation0"
     print("WARNING: internal path is used")
 
 print("data source path: " + path)

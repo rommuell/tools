@@ -55,51 +55,149 @@ egms = [] #list containing list of paths to egms files which should be applied t
 egms_per_ok =[]
 directory_0s =[]
 poses_gts = []
+gts = []
+bag_leicas = []
+configs = []
 
-bags.append("/home/rm/Documents/master_thesis/blender/laborit_away/2/laborit2_away_bl.bag")
-directory_0s.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/l_")
-poses_gts.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/poses.csv")
+# gts.append("leica")
+# bags.append("/home/rm/Documents/master_thesis/data/leica_outdoor/13_HG_2017-05-05-08-47-12.bag")
+# directory_0s.append("/media/rm/9480CE0280CDEB36/experiments_1/HG_13/l_")
+# poses_gts.append("")
+# bag_leicas.append("/home/rm/Documents/master_thesis/data/leica_outdoor/13_HG_L_2017-05-05-08-47-09.bag")
+# configs.append("/home/rm/catkin_ws/src/okvis_ros/okvis/config/config_visensor_mono.yaml")
+#
+# egms_per_ok = []
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/HG_13/egm_0.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/HG_13/egm_1.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/HG_13/egm_2.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/HG_13/egm_3.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/HG_13/egm_4.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/HG_13/egm_5.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/HG_13/egm_6.yaml")
+# egms.append(egms_per_ok)
+#
+#
+#
+#
+#
+# gts.append("sim_blender")
+# bags.append("/home/rm/Documents/master_thesis/blender/laborit_away/2/laborit2_away_bl.bag")
+# directory_0s.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/l_")
+# poses_gts.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/poses.csv")
+# bag_leicas.append("")
+# configs.append("/home/rm/catkin_ws/src/okvis_ros/okvis/config/config_blender.yaml")
+#
+# egms_per_ok = []
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_0.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_1.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_2.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_3.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_4.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_5.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_6.yaml")
+# egms.append(egms_per_ok)
+#
+#
+#
+#
+#
+# gts.append("sim_blender")
+# bags.append("/home/rm/Documents/master_thesis/blender/laborit/3/laborit3_bl.bag")
+# directory_0s.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/l_")
+# poses_gts.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/poses.csv")
+# configs.append("/home/rm/catkin_ws/src/okvis_ros/okvis/config/config_blender.yaml")
+# bag_leicas.append("")
+#
+# egms_per_ok = []
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_0.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_1.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_2.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_3.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_4.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_5.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_6.yaml")
+# egms.append(egms_per_ok)
+#
+#
+#
+#
+#
+# gts.append("sim_blender")
+# bags.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/exp7_cut.bag")
+# directory_0s.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/l_")
+# poses_gts.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/poses.csv")
+# configs.append("/home/rm/catkin_ws/src/okvis_ros/okvis/config/config_blender.yaml")
+# bag_leicas.append("")
+#
+# egms_per_ok = []
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_0.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_1.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_2.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_3.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_4.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_5.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_6.yaml")
+# egms.append(egms_per_ok)
+#
+#
+#
+#
+# gts.append("leica")
+# bags.append("/home/rm/Documents/master_thesis/data/leica_outdoor/31_ST_2017-05-05-11-11-43.bag")
+# directory_0s.append("/media/rm/9480CE0280CDEB36/experiments_1/31_ST/l_")
+# poses_gts.append("")
+# bag_leicas.append("/home/rm/Documents/master_thesis/data/leica_outdoor/31_ST_L_2017-05-05-11-11-38.bag")
+# configs.append("/home/rm/catkin_ws/src/okvis_ros/okvis/config/config_visensor_mono.yaml")
+#
+# egms_per_ok = []
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/31_ST/egm_0.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/31_ST/egm_1.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/31_ST/egm_2.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/31_ST/egm_3.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/31_ST/egm_4.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/31_ST/egm_5.yaml")
+# egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/31_ST/egm_6.yaml")
+# egms.append(egms_per_ok)
 
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_0.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_1.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_2.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_3.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_4.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_5.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2/egm_6.yaml")
-egms.append(egms_per_ok)
 
 
-
-bags.append("/home/rm/Documents/master_thesis/blender/laborit/3/laborit3_bl.bag")
-directory_0s.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/l_")
-poses_gts.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/poses.csv")
+gts.append("leica")
+bags.append("/home/rm/Documents/master_thesis/data/leica_outdoor/24_CAB_2017-05-05-09-37-50.bag")
+directory_0s.append("/media/rm/9480CE0280CDEB36/experiments_2/24_CAB/l_")
+poses_gts.append("")
+bag_leicas.append("/home/rm/Documents/master_thesis/data/leica_outdoor/24_CAB_L_2017-05-05-09-37-45.bag")
+configs.append("/home/rm/catkin_ws/src/okvis_ros/okvis/config/config_visensor_mono.yaml")
 
 egms_per_ok = []
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_0.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_1.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_2.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_3.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_4.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_5.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/laborit3/egm_6.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_2/24_CAB/egm_10.yaml")
 egms.append(egms_per_ok)
 
 
 
-bags.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/exp7_cut.bag")
-directory_0s.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/l_")
-poses_gts.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/poses.csv")
+gts.append("leica")
+bags.append("/home/rm/Documents/master_thesis/data/leica_outdoor/23_CAB_2017-05-05-09-36-15.bag")
+directory_0s.append("/media/rm/9480CE0280CDEB36/experiments_2/23_CAB/l_")
+poses_gts.append("")
+bag_leicas.append("/home/rm/Documents/master_thesis/data/leica_outdoor/23_CAB_L_2017-05-05-09-36-11.bag")
+configs.append("/home/rm/catkin_ws/src/okvis_ros/okvis/config/config_visensor_mono.yaml")
 
 egms_per_ok = []
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_0.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_1.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_2.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_3.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_4.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_5.yaml")
-egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_1/quarry7/egm_6.yaml")
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_2/23_CAB/egm_10.yaml")
 egms.append(egms_per_ok)
+
+
+
+gts.append("leica")
+bags.append("/home/rm/Documents/master_thesis/data/leica_outdoor/31_ST_2017-05-05-11-11-43.bag")
+directory_0s.append("/media/rm/9480CE0280CDEB36/experiments_2/31_ST/l_")
+poses_gts.append("")
+bag_leicas.append("/home/rm/Documents/master_thesis/data/leica_outdoor/31_ST_L_2017-05-05-11-11-38.bag")
+configs.append("/home/rm/catkin_ws/src/okvis_ros/okvis/config/config_visensor_mono.yaml")
+
+egms_per_ok = []
+egms_per_ok.append("/media/rm/9480CE0280CDEB36/experiments_2/31_ST/egm_10.yaml")
+egms.append(egms_per_ok)
+
 
 
 for e in range(0, bags.__len__()):
@@ -111,20 +209,20 @@ for e in range(0, bags.__len__()):
     N = 25
     bag = bags[e]
     directory_0 = directory_0s[e]
-    gt = "sim_blender" # set to leica (3D) resp. to vicon or sim or sim_blender (6D)
+    gt = gts[e] # set to leica (3D) resp. to vicon or sim or sim_blender (6D)
 
     #in case of sim_blender
     poses_gt = poses_gts[e]
 
     #in case of leica 3D ground truth
-    bag_leica = "/home/rm/Documents/master_thesis/data/leica_outdoor/31_ST_L_2017-05-05-11-11-38.bag"
+    bag_leica = bag_leicas[e]
     topic = "/leica/position" #ground truth
 
     #in case of sim
     img_topic = "/firefly/vi_sensor/left/image_raw"
     imu_topic = "/firefly/vi_sensor/imu"
 
-    config = "/home/rm/catkin_ws/src/okvis_ros/okvis/config/config_blender.yaml"
+    config = configs[e]
     protocol_template = "/home/rm/Documents/master_thesis/src/tools/protocol.txt"
 
 
@@ -178,8 +276,9 @@ for e in range(0, bags.__len__()):
             command = "rostopic echo " + "-b " + bag_leica + " -p " + topic + " >" + csv_file
             print(command)
             pyperclip.copy(command)
-            print("paste in terminal")
-            raw_input('Press Enter')
+            os.system("bash -i -c \"" + command + "\"")
+            #print("paste in terminal")
+            #raw_input('Press Enter')
             print
 
             # reorder csv column
@@ -203,15 +302,6 @@ for e in range(0, bags.__len__()):
         command = "roslaunch okvis_ros okvis_node_synchronous.launch " + "config:=" + config + " bag:=" + bag
         print(command)
         os.system("bash -i -c \"" + command + "\"")
-        pyperclip.copy(command)
-        #print("paste in terminal and confirm to save (y)")
-        #raw_input('Press Enter')
-        print
-        # pOkvis = subprocess.Popen( ["roslaunch", "okvis_ros", "okvis_node_synchronous.launch",
-        #                             "config:=" + config,
-        #                             "bag:=" + bag
-        #                             ] )
-        #pOkvis.wait()
 
         # move okvis output to bag folder
         shutil.move(okvis_output, directory)

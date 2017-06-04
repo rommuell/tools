@@ -12,7 +12,13 @@ def import_time_data(paths):
     data=[]
 
     for path in paths:
-        with open(path + "/time_data.yaml") as infile:
+        file = path + "/time_data.yaml"
+
+        if not os.path.exists(file):
+            print "time_data.yaml not found"
+            continue
+
+        with open(file) as infile:
             for i in range(1):
                 _ = infile.readline()
             #data = yaml.load(infile)
@@ -48,7 +54,7 @@ def import_time_data(paths):
 
     #explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
-    if True:
+    if True: #if True, sum up over windows
 
         f = m = b = t = 0.0
         labels2 = labels
