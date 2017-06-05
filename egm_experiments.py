@@ -35,12 +35,12 @@ R_0 = 0
 R_1 = 50
 #path = "/media/rm/9480CE0280CDEB36/experiments_1/quarry7"
 #path = "/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2"
-path = "/media/rm/9480CE0280CDEB36/experiments_1/laborit3"
+#path = "/media/rm/9480CE0280CDEB36/experiments_1/laborit3"
 #path = "/media/rm/9480CE0280CDEB36/experiments_1/HG_13"
 
-#path = "/media/rm/9480CE0280CDEB36/experiments_2/23_CAB"
-#path = "/media/rm/9480CE0280CDEB36/experiments_2/24_CAB"
-#path = "/media/rm/9480CE0280CDEB36/experiments_2/31_ST"
+path = "/media/rm/9480CE0280CDEB36/experiments_2/23_CAB"
+path = "/media/rm/9480CE0280CDEB36/experiments_2/24_CAB"
+path = "/media/rm/9480CE0280CDEB36/experiments_2/31_ST"
 
 path = path + "/l_"
 
@@ -73,6 +73,7 @@ for R in range(R_0, R_1 + 1):
     matches_cnt = []
 
     c = 0
+    k = 0
     for x in range(i, i + N):
         rec_path = path + str(x) + "/reconstructions/"
 
@@ -148,6 +149,7 @@ for R in range(R_0, R_1 + 1):
 
             j = j + 1
             c += 1
+            k += data_window_ok["opt_wind"].__len__() - it - 1
             path_eval = path_reopt + "evaluation" + str(j)
 
 
@@ -218,7 +220,7 @@ for R in range(R_0, R_1 + 1):
 
 #time
     fig1, ax1 = plt.subplots()
-    plt.suptitle(os.path.basename(path) + " (" + "%0.1f" % total_t + "s)")
+    plt.suptitle("%0.1f" % total_t + "s, " + "%0.1f" % (float(k)/c) + " frames per window")
 
     cmap = plt.cm.jet
     colors = cmap([0.1, 0.4, 0.7, 1, 0.4, 0.7, 1])

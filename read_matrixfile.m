@@ -392,6 +392,7 @@ corr = xcorr(a,b);
 l = length(a);
 plot((-l+1):(l-1), corr/length(a));
 ylim(y)
+legend('trace', 'determinant')
 % title('xcorr determinant pos error')
 
 subplot(5,1,2)
