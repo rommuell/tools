@@ -31,7 +31,7 @@ def autolabel(rects, n, add_value=[]):
 
 
 #filtering
-ind = np.arange(3) + 0.125  # the x locations for the groups
+ind = np.arange(3) + 0.85  # the x locations for the groups
 width = 0.25  # the width of the bars
 
 fig, ax = plt.subplots()
@@ -54,6 +54,27 @@ autolabel(rects3,1)
 
 
 
+#filtering
+ind = np.arange(3) + 0.3  # the x locations for the groups
+width = 0.35  # the width of the bars
+
+fig, ax = plt.subplots()
+rects1 = ax.bar(ind -width/2, [1.8, 1.8, 1.9], width, color='b', error_kw=dict(ecolor='black'))
+rects3 = ax.bar(ind + width/2, [1.2, 1.4, 1.0], width, color='red', error_kw=dict(ecolor='black'))
+
+# add some text for labels, title and axes ticks
+ax.set_ylabel('[px]')
+ax.set_title('Reprojection error: OKVIS vs. ours', fontsize=16)
+ax.set_xticks(ind + width/2)
+ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry'), fontsize=16)
+ax.set_ylim((0, 3))
+
+ax.legend((rects1[0], rects3[0]), ('OKVIS', 'ours'))
+
+autolabel(rects1,1)
+autolabel(rects3,1)
+
+
 
 #without additional features
 ind = np.arange(4) + 0.3  # the x locations for the groups
@@ -66,7 +87,7 @@ rects1 = ax.bar(ind, [125, 222, 152, 102], width, color='b', error_kw=dict(ecolo
 ax.set_ylabel('[%]')
 ax.set_title('Reoptimization of OKVIS data in bigger window', fontsize=16)
 ax.set_xticks(ind + width/2)
-ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry', 'HG 13'), fontsize=16)
+ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry', 'HG'), fontsize=16)
 ax.set_ylim((0, 250))
 ax.legend()
 ax.axhline(y=100, xmin=0, xmax=10, linewidth=2, color = 'green')
@@ -98,20 +119,20 @@ ax2.legend(loc=0)
 
 
 # results max TTA
-ind = np.arange(4) + 0.125  # the x locations for the groups
-width = 0.25  # the width of the bars
+ind = np.arange(6) + 0.85  # the x locations for the groups
+width = 0.28  # the width of the bars
 
-fig3, ax = plt.subplots()
+fig3, ax = plt.subplots(figsize=(10,6))
 #data from experiments_1, run 32
-rects1 = ax.bar(ind - width, [496, 484, 109, 0], width, color='b', error_kw=dict(ecolor='black'))
-rects2 = ax.bar(ind, [110, 122, 124, 93], width, color='orange', error_kw=dict(ecolor='black'))
-rects3 = ax.bar(ind  + width, [73, 90, 73, 86], width, color='red', error_kw=dict(ecolor='black'))
+rects1 = ax.bar(ind - width, [496, 484, 109, 0, 0, 0], width, color='b', error_kw=dict(ecolor='black'))
+rects2 = ax.bar(ind, [110, 122, 124, 93, 157, 107], width, color='orange', error_kw=dict(ecolor='black'))
+rects3 = ax.bar(ind  + width, [73, 90, 73, 86, 90, 88], width, color='red', error_kw=dict(ecolor='black'))
 
 # add some text for labels, title and axes ticks
 ax.set_ylabel('[%]')
 ax.set_title('Our approach vs. OKVIS', fontsize=16)
 ax.set_xticks(ind + width/2)
-ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry', 'HG'), fontsize=16)
+ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry', 'HG', 'CAB', 'Clausius-\nstrasse'), fontsize=16)
 ax.set_ylim((0, 600))
 
 ax.axhline(y=100, xmin=0, xmax=10, linewidth=2, color = 'green')
@@ -124,15 +145,15 @@ xlim = ax.get_xlim()
 
 
 # results max TTA without scale aligned
-fig4, ax = plt.subplots()
-rects1 = ax.bar(ind - width, [496, 484, 109, 0], width, color='b', error_kw=dict(ecolor='black'))
-rects2 = ax.bar(ind, [110, 122, 124, 93], width, color='orange', error_kw=dict(ecolor='black'))
+fig4, ax = plt.subplots(figsize=(10,6))
+rects1 = ax.bar(ind - width, [496, 484, 109, 0, 0, 0], width, color='b', error_kw=dict(ecolor='black'))
+rects2 = ax.bar(ind, [110, 122, 124, 93, 157, 107], width, color='orange', error_kw=dict(ecolor='black'))
 
 # add some text for labels, title and axes ticks
 ax.set_ylabel('[%]')
 ax.set_title('Our approach vs. OKVIS', fontsize=16)
 ax.set_xticks(ind + width/2)
-ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry', 'HG'), fontsize=16)
+ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry', 'HG', 'CAB', 'Clausius-\nstrasse'), fontsize=16)
 ax.set_ylim((0, 600))
 ax.axhline(y=100, xmin=0, xmax=10, linewidth=2, color = 'green')
 ax.legend((rects1[0], rects2[0]), ('angle', 'position T-R-aligned'))
@@ -145,20 +166,20 @@ autolabel(rects2,0)
 
 
 # results max TTA
-ind = np.arange(4) + 0.125  # the x locations for the groups
-width = 0.25  # the width of the bars
+ind = np.arange(6) + 0.85  # the x locations for the groups
+width = 0.28  # the width of the bars
 
-fig5, ax = plt.subplots()
+fig5, ax = plt.subplots(figsize=(10,6))
 #data from experiments_1, run 33
-rects1 = ax.bar(ind - width, [100, 100, 100, 0], width, color='b', error_kw=dict(ecolor='black'))
-rects2 = ax.bar(ind, [109, 125, 116, 98], width, color='orange', error_kw=dict(ecolor='black'))
-rects3 = ax.bar(ind  + width, [69, 89, 107, 75], width, color='red', error_kw=dict(ecolor='black'))
+rects1 = ax.bar(ind - width, [100, 100, 100, 0, 0, 0], width, color='b', error_kw=dict(ecolor='black'))
+rects2 = ax.bar(ind, [109, 125, 116, 98, 143, 107], width, color='orange', error_kw=dict(ecolor='black'))
+rects3 = ax.bar(ind  + width, [69, 89, 107, 75, 84, 85], width, color='red', error_kw=dict(ecolor='black'))
 
 # add some text for labels, title and axes ticks
 ax.set_ylabel('[%]')
 ax.set_title('Our approach vs. OKVIS - rotation locked', fontsize=16)
 ax.set_xticks(ind + width/2)
-ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry', 'HG'), fontsize=16)
+ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry', 'HG', 'CAB', 'Clausius-\nstrasse'), fontsize=16)
 ax.set_ylim((0, 600))
 
 ax.axhline(y=100, xmin=0, xmax=10, linewidth=2, color = 'green')
@@ -171,15 +192,16 @@ xlim = ax.get_xlim()
 
 
 # results max TTA without scale aligned
-fig6, ax = plt.subplots()
-rects1 = ax.bar(ind - width, [100, 100, 100, 0], width, color='b', error_kw=dict(ecolor='black'))
-rects2 = ax.bar(ind, [109, 125, 116, 98], width, color='orange', error_kw=dict(ecolor='black'))
+fig6, ax = plt.subplots(figsize=(10,6))
+fig6.set_size_inches([10, 6])
+rects1 = ax.bar(ind - width, [100, 100, 100, 0, 0, 0], width, color='b', error_kw=dict(ecolor='black'))
+rects2 = ax.bar(ind, [109, 125, 116, 98, 143, 107], width, color='orange', error_kw=dict(ecolor='black'))
 
 # add some text for labels, title and axes ticks
 ax.set_ylabel('[%]')
 ax.set_title('Our approach vs. OKVIS - rotation locked', fontsize=16)
 ax.set_xticks(ind + width/2)
-ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry', 'HG'), fontsize=16)
+ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry', 'HG', 'CAB', 'Clausius-\nstrasse'), fontsize=16)
 ax.set_ylim((0, 600))
 ax.axhline(y=100, xmin=0, xmax=10, linewidth=2, color = 'green')
 ax.legend((rects1[0], rects2[0]), ('angle', 'position T-R-aligned'))
@@ -190,3 +212,4 @@ autolabel(rects2,0)
 
 
 plt.show()
+print

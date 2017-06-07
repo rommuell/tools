@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1fc8fc0b-ca29-46db-b9fe-444eec0d42ff" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/criterion_eval.m" afterPath="$PROJECT_DIR$/criterion_eval.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/egm_experiments.py" afterPath="$PROJECT_DIR$/egm_experiments.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plot_window_results.py" afterPath="$PROJECT_DIR$/plot_window_results.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_filtering.py" afterPath="$PROJECT_DIR$/plots_filtering.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,7 +21,7 @@
       <file leaf-file-name="reorder.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reorder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2955">
+            <state relative-caret-position="2880">
               <caret line="197" column="78" lean-forward="false" selection-start-line="197" selection-start-column="78" selection-end-line="197" selection-end-column="78" />
               <folding>
                 <element signature="e#84#94#0" expanded="true" />
@@ -48,7 +45,7 @@
       <file leaf-file-name="egm_experiments.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/egm_experiments.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
+            <state relative-caret-position="4935">
               <caret line="329" column="0" lean-forward="false" selection-start-line="329" selection-start-column="0" selection-end-line="329" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -60,8 +57,8 @@
       <file leaf-file-name="plots_filtering.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plots_filtering.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+            <state relative-caret-position="570">
+              <caret line="89" column="72" lean-forward="false" selection-start-line="89" selection-start-column="72" selection-end-line="89" selection-end-column="72" />
               <folding>
                 <element signature="e#26#44#0" expanded="true" />
               </folding>
@@ -134,8 +131,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>0.0</find>
-      <find>list</find>
       <find>genro</find>
       <find>genf</find>
       <find>_ok</find>
@@ -164,6 +159,8 @@
       <find>scatter</find>
       <find>15</find>
       <find>Laborit a</find>
+      <find>0.125</find>
+      <find>0.7</find>
     </findStrings>
     <replaceStrings>
       <replace>deg</replace>
@@ -179,6 +176,7 @@
       <replace>ax2</replace>
       <replace>ax3</replace>
       <replace>,</replace>
+      <replace>0.85</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -213,9 +211,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="24" />
+    <option name="y" value="-4" />
     <option name="width" value="1855" />
-    <option name="height" value="1056" />
+    <option name="height" value="1084" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -232,8 +230,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -262,6 +258,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -523,19 +521,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14339623" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35575944" sideWeight="0.68301886" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35575944" sideWeight="0.6894879" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.49380055" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35575944" sideWeight="0.31698114" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35575944" sideWeight="0.31051213" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.49811321" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43221202" sideWeight="0.55956876" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43221202" sideWeight="0.5574124" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -598,16 +596,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/plots_filtering.py</url>
-          <line>58</line>
-          <option name="timeStamp" value="165" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/plots_filtering.py</url>
-          <line>50</line>
-          <option name="timeStamp" value="166" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/plots_filtering.py</url>
           <line>20</line>
           <option name="timeStamp" value="167" />
         </line-breakpoint>
@@ -616,11 +604,16 @@
           <line>329</line>
           <option name="timeStamp" value="168" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/plots_filtering.py</url>
+          <line>214</line>
+          <option name="timeStamp" value="169" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="169" />
+      <option name="time" value="170" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -916,7 +909,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reorder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2955">
+        <state relative-caret-position="2880">
           <caret line="197" column="78" lean-forward="false" selection-start-line="197" selection-start-column="78" selection-end-line="197" selection-end-column="78" />
           <folding>
             <element signature="e#84#94#0" expanded="true" />
@@ -994,7 +987,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/egm_experiments.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
+        <state relative-caret-position="4935">
           <caret line="329" column="0" lean-forward="false" selection-start-line="329" selection-start-column="0" selection-end-line="329" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -1004,8 +997,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plots_filtering.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+        <state relative-caret-position="570">
+          <caret line="89" column="72" lean-forward="false" selection-start-line="89" selection-start-column="72" selection-end-line="89" selection-end-column="72" />
           <folding>
             <element signature="e#26#44#0" expanded="true" />
           </folding>
