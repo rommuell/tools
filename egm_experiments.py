@@ -32,15 +32,15 @@ PI = math.pi
 i = 0
 N = 25
 R_0 = 0
-R_1 = 50
+R_1 = 0
 #path = "/media/rm/9480CE0280CDEB36/experiments_1/quarry7"
 #path = "/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2"
-#path = "/media/rm/9480CE0280CDEB36/experiments_1/laborit3"
+path = "/media/rm/9480CE0280CDEB36/experiments_1/laborit3"
 #path = "/media/rm/9480CE0280CDEB36/experiments_1/HG_13"
 
-path = "/media/rm/9480CE0280CDEB36/experiments_2/23_CAB"
-path = "/media/rm/9480CE0280CDEB36/experiments_2/24_CAB"
-path = "/media/rm/9480CE0280CDEB36/experiments_2/31_ST"
+#path = "/media/rm/9480CE0280CDEB36/experiments_2/23_CAB"
+#path = "/media/rm/9480CE0280CDEB36/experiments_2/24_CAB"
+#path = "/media/rm/9480CE0280CDEB36/experiments_2/31_ST"
 
 path = path + "/l_"
 
@@ -72,8 +72,9 @@ for R in range(R_0, R_1 + 1):
     rec_paths = []
     matches_cnt = []
 
-    c = 0
-    k = 0
+    c = 0 #number of windows
+    k = 0 #number of keyframes that are reoptimized
+    k_tot = 0 #number of keyframes including fist and second overlap
     for x in range(i, i + N):
         rec_path = path + str(x) + "/reconstructions/"
 
@@ -150,6 +151,7 @@ for R in range(R_0, R_1 + 1):
             j = j + 1
             c += 1
             k += data_window_ok["opt_wind"].__len__() - it - 1
+            k_tot += data_window_ok["opt_wind"].__len__() + 5
             path_eval = path_reopt + "evaluation" + str(j)
 
 
@@ -220,7 +222,8 @@ for R in range(R_0, R_1 + 1):
 
 #time
     fig1, ax1 = plt.subplots()
-    plt.suptitle("%0.1f" % total_t + "s, " + "%0.1f" % (float(k)/c) + " frames per window")
+    plt.suptitle("total time: %0.1f" % total_t + "s")
+    ax1.set_xlabel("%0.1f" % (float(k)/c) + " reoptimized keyframes per window" + "\n %0.1f" % (float(k_tot)/c) + " keyframes per window")
 
     cmap = plt.cm.jet
     colors = cmap([0.1, 0.4, 0.7, 1, 0.4, 0.7, 1])
@@ -247,19 +250,20 @@ for R in range(R_0, R_1 + 1):
 
 # scale scatters
     fig3, axes = plt.subplots(nrows=1, ncols=3)
+    fig3.patch.set_facecolor('white')
     ax1, ax2, ax3 = axes.flatten()
 
     ax1.scatter(scale_overlap, scale_flex_ok, label='reopt window')
-    ax1.set_xlabel("scale overlap (fixed)")
-    ax1.set_ylabel("scale flex (flexible)")
-    ax1.set_title("OKVIS")
+    ax1.set_xlabel("scale overlap (fixed)", fontsize=20)
+    ax1.set_ylabel("scale reoptimization window", fontsize=20)
+    ax1.set_title("OKVIS", fontsize=20)
     x0,x1 = ax1.get_xlim()
     y0,y1 = ax1.get_ylim()
     low = min(x0, y0)
     up = max(x1, y1)
     m,b = np.polyfit(scale_overlap, scale_flex_ok, 1)
     #ax1.plot([low, up],[low * m + b, up * m + b])
-    ax1.legend(loc=0)
+    ax1.legend(loc=0, fontsize=16)
 
     # model_ransac = linear_model.RANSACRegressor(linear_model.LinearRegression(), min_samples=int(0.8*scale_overlap.__len__()))
     # model_ransac.fit(np.array(scale_overlap).reshape(-1, 1), np.array(scale_flex_ok).reshape(-1, 1))
@@ -275,16 +279,16 @@ for R in range(R_0, R_1 + 1):
 
 
     ax2.scatter(scale_overlap, scale_flex_re, label='reopt window')
-    ax2.set_xlabel("scale overlap (fixed)")
-    ax2.set_ylabel("scale flex (flexible)")
-    ax2.set_title("reopt")
+    ax2.set_xlabel("scale overlap (fixed)", fontsize=20)
+    ax2.set_ylabel("scale reoptimization window", fontsize=20)
+    ax2.set_title("ours", fontsize=20)
     x0,x1 = ax2.get_xlim()
     y0,y1 = ax2.get_ylim()
     low = min(x0, y0)
     up = max(x1, y1)
     m,b = np.polyfit(scale_overlap, scale_flex_re, 1)
     ax2.plot([low, up],[low * m + b, up * m + b])
-    ax2.legend(loc=0)
+    ax2.legend(loc=0, fontsize=16)
 
     # model_ransac = linear_model.RANSACRegressor(linear_model.LinearRegression(), min_samples=int(0.8*scale_overlap.__len__()))
     # model_ransac.fit(np.array(scale_overlap).reshape(-1, 1), np.array(scale_flex_re).reshape(-1, 1))
@@ -301,7 +305,7 @@ for R in range(R_0, R_1 + 1):
     ax3.scatter(scale_overlap, abs_p_first_re)
     ax3.set_xlabel("scale overlap")
     ax3.set_ylabel("position error of final kf")
-    ax3.set_title("reopt")
+    ax3.set_title("reopt", fontsize=20)
     x0,x1 = ax3.get_xlim()
     y0,y1 = ax3.get_ylim()
     low = x0
@@ -322,6 +326,6 @@ for R in range(R_0, R_1 + 1):
     ax3.set_aspect(abs(x1-x0)/abs(y1-y0))
 
     multipage(os.path.dirname(path) + "/" + str(R) + ".pdf")
-    #plt.show()
+    plt.show()
     plt.close('all')
 

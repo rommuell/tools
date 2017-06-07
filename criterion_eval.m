@@ -10,7 +10,7 @@ load('/media/rm/9480CE0280CDEB36/experiments_1/criterion/laborit2_l2/CL.mat')
 load('/media/rm/9480CE0280CDEB36/experiments_1/criterion/HG_13/CL.mat')
 
 C = CL2_1;
-C = CHG13_1;
+%C = CHG13_1;
 
 % figure
 % yyaxis left
@@ -20,29 +20,72 @@ C = CHG13_1;
 % legend('A_all', 'e_pos_5')
 
 figure
+ax1 = subplot(4,1,1);
 yyaxis left
-plot(C(20:end-10,6)); %A
+plot(C(20:end-10,6), 'linewidth', 1.5); %A
+ylim([1.5e-8, 3.5e-8])
 yyaxis right
-plot(C(20:end-10,18)); 
-legend('A', 'e_pos_1')
-title('against single trace')
+plot(C(20:end-10,18), 'linewidth', 1.5); 
+legend('A_{pose}', 'e_{rel\_p}', 'Location', 'northwest')
+title('trace of pose')
+ylim([0, 0.5])
+ylabel('m')
 
-figure
+ax2 = subplot(4,1,2);
 yyaxis left
-plot(C(20:end-10,4));
+plot(C(20:end-10,4), 'linewidth', 1.5);
+ylim([0, 1.1e-4])
 yyaxis right
-plot(C(20:end-10,18));
-legend('A_all', 'e_pos_1')
-title('against full trace')
+plot(C(20:end-10,18), 'linewidth', 1.5);
+legend('A_{window}', 'e_{rel\_p}', 'Location', 'northwest')
+title('trace of full window')
+ylim([0, 0.5])
+ylabel('m')
 
-figure
+ax3 = subplot(4,1,3);
+yyaxis left
+plot(C(20:end-10,8), 'linewidth', 1.5);
+ylim([-0.1e-252, 1.6e-252])
+yyaxis right
+plot(C(20:end-10,18), 'linewidth', 1.5);
+legend('D_{window}', 'e_{rel\_p}', 'Location', 'northwest')
+title('determinant of full window')
+ylim([0, 0.5])
+ylabel('m')
+
+ax4 = subplot(4,1,4);
 yyaxis left
 c = real(log(C(20:end-10,8)));
-plot(c);
+plot(c, 'linewidth', 1.5);
+ylim([-680, -553])
+yyaxis right
+plot(C(20:end-10,18), 'linewidth', 1.5);
+legend('log(D_{window})', 'e_{rel\_p}', 'Location', 'northwest')
+title('logarithm of determinant of full window')
+ylim([0, 0.5])
+xlabel('keyframes')
+ylabel('m')
+
+linkaxes([ax1,ax2,ax3, ax4],'x')
+xlim([2,86])
+
+%%
+figure
+yyaxis left
+hold on
+plot(C(20:end-10,6)); %A
+plot(C(20:end-10,4)); %A_all
+area(C(20:end-10,8)*1e250); %D_all
+ylim([0, 14e-5])
+
+% c = real(log(C(20:end-10,8)));
+% plot(c); %log(det)
+
 yyaxis right
 plot(C(20:end-10,18));
-legend('D_all', 'e_pos_1')
-title('against log(det)')
+legend('A_{pose}', 'A_{window}', 'D_{window}', 'relative position error', 'Location', 'northwest')
+title('Relative position error vs. criteria')
+
 
 figure
 y = [-1, 1];
@@ -71,7 +114,7 @@ hold on
 title('xcorr A -rel error')
 
 subplot(5,1,3)
-c(c==-Inf) = 0
+c(c==-Inf) = -10000;
 a = c; % A
 b = C(20:end-10,18); % pos error
 a = (a-mean(a))/std(a);
@@ -82,3 +125,4 @@ plot((-l+1):(l-1), corr/length(a));
 ylim(y)
 hold on
 title('xcorr A -rel error')
+

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+#
 import numpy as np
 from glob import glob
 import os
@@ -8,16 +10,24 @@ import plot_time
 from sklearn import linear_model, datasets
 
 
-def autolabel(rects, n):
+def autolabel(rects, n, add_value=[]):
     """
     Attach a text label above each bar displaying its height
     """
-    for rect in rects:
-        height = rect.get_height()
-        if not np.isnan(height):
-            ax.text(rect.get_x() + rect.get_width()/2., 1.05*height,
-                    ('%1.' + str(n) + 'f') % height,
-                    ha='center', va='bottom')
+    if rects.__len__() == add_value.__len__():
+        for rect, val in zip(rects, add_value):
+            height = rect.get_height()
+            if not np.isnan(height) or height == 0:
+                ax.text(rect.get_x() + rect.get_width()/2., 1.03 * height,
+                        ('%1.' + str(n) + 'f') % height + '\n(' + val + ')',
+                        ha='center', va='bottom')
+    else:
+        for rect in rects:
+            height = rect.get_height()
+            if not (np.isnan(height) or height == 0):
+                ax.text(rect.get_x() + rect.get_width()/2., 1.07* height,
+                        ('%1.' + str(n) + 'f') % height,
+                        ha='center', va='bottom')
 
 
 #filtering
@@ -31,9 +41,9 @@ rects3 = ax.bar(ind + width, [1.2, 1.4, 1.0], width, color='red', error_kw=dict(
 
 # add some text for labels, title and axes ticks
 ax.set_ylabel('[px]')
-ax.set_title('Reprojection error after different ways of filtering')
+ax.set_title('Reprojection error depending on different filtering procedures', fontsize=14.5)
 ax.set_xticks(ind + width/2)
-ax.set_xticklabels(('Laborit away', 'Laborit close', 'quarry'))
+ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry'), fontsize=16)
 ax.set_ylim((0, 3))
 
 ax.legend((rects1[0], rects2[0], rects3[0]), ('OKVIS', 'geometric filtering', 'ours'))
@@ -44,20 +54,21 @@ autolabel(rects3,1)
 
 
 
+
 #without additional features
 ind = np.arange(4) + 0.3  # the x locations for the groups
 width = 0.4  # the width of the bars
 
 fig, ax = plt.subplots()
-rects1 = ax.bar(ind, [125, 222, 152, 102], width, color='b', error_kw=dict(ecolor='black'))
+rects1 = ax.bar(ind, [125, 222, 152, 102], width, color='b', error_kw=dict(ecolor='black'), label='position T-R-aligned')
 
 # add some text for labels, title and axes ticks
 ax.set_ylabel('[%]')
-ax.set_title('reoptimize OKVIS data in bigger window')
+ax.set_title('Reoptimization of OKVIS data in bigger window', fontsize=16)
 ax.set_xticks(ind + width/2)
-ax.set_xticklabels(('Laborit away', 'Laborit close', 'Quarry', 'HG 13'))
+ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry', 'HG 13'), fontsize=16)
 ax.set_ylim((0, 250))
-ax.legend('rms error')
+ax.legend()
 ax.axhline(y=100, xmin=0, xmax=10, linewidth=2, color = 'green')
 
 autolabel(rects1,0)
@@ -77,7 +88,7 @@ HG13 = np.array([ 0.01172573, 0.01891052, 0.02907109, 0.03511144, 0.04923691, 0.
 ax2.plot(x_ax, l2 * 100, lw=2.0, label='Laborit away')
 ax2.plot(x_ax, l3 * 100, lw=2.0, label='Laborit close')
 ax2.plot(x_ax, q7 * 100, lw=2.0, label='Quarry')
-ax2.plot(x_ax, HG13 * 100, lw=2.0, label='HG 13')
+ax2.plot(x_ax, HG13 * 100, lw=2.0, label='HG')
 
 ax2.set_xlabel("kf in overlap")
 ax2.set_ylabel("% of matches")
@@ -98,13 +109,13 @@ rects3 = ax.bar(ind  + width, [73, 90, 73, 86], width, color='red', error_kw=dic
 
 # add some text for labels, title and axes ticks
 ax.set_ylabel('[%]')
-ax.set_title('Results compared to OKVIS')
+ax.set_title('Our approach vs. OKVIS', fontsize=16)
 ax.set_xticks(ind + width/2)
-ax.set_xticklabels(('Laborit away', 'Laborit close', 'Quarry', 'HG 15'))
+ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry', 'HG'), fontsize=16)
 ax.set_ylim((0, 600))
 
 ax.axhline(y=100, xmin=0, xmax=10, linewidth=2, color = 'green')
-ax.legend((rects1[0], rects2[0], rects3[0]), ('angle', 'rms T-R-aligned', 'rms T-R-S-aligned'))
+ax.legend((rects1[0], rects2[0], rects3[0]), ('angle', 'position T-R-aligned', 'position T-R-S-aligned'))
 
 autolabel(rects1,0)
 autolabel(rects2,0)
@@ -119,12 +130,12 @@ rects2 = ax.bar(ind, [110, 122, 124, 93], width, color='orange', error_kw=dict(e
 
 # add some text for labels, title and axes ticks
 ax.set_ylabel('[%]')
-ax.set_title('Results compared to OKVIS')
+ax.set_title('Our approach vs. OKVIS', fontsize=16)
 ax.set_xticks(ind + width/2)
-ax.set_xticklabels(('Laborit away', 'Laborit close', 'Quarry', 'HG 15'))
+ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry', 'HG'), fontsize=16)
 ax.set_ylim((0, 600))
 ax.axhline(y=100, xmin=0, xmax=10, linewidth=2, color = 'green')
-ax.legend((rects1[0], rects2[0]), ('angle', 'rms T-R-aligned'))
+ax.legend((rects1[0], rects2[0]), ('angle', 'position T-R-aligned'))
 ax.set_xlim(xlim)
 
 autolabel(rects1,0)
@@ -145,13 +156,13 @@ rects3 = ax.bar(ind  + width, [69, 89, 107, 75], width, color='red', error_kw=di
 
 # add some text for labels, title and axes ticks
 ax.set_ylabel('[%]')
-ax.set_title('Results compared to OKVIS')
+ax.set_title('Our approach vs. OKVIS - rotation locked', fontsize=16)
 ax.set_xticks(ind + width/2)
-ax.set_xticklabels(('Laborit away', 'Laborit close', 'Quarry', 'HG 15'))
+ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry', 'HG'), fontsize=16)
 ax.set_ylim((0, 600))
 
 ax.axhline(y=100, xmin=0, xmax=10, linewidth=2, color = 'green')
-ax.legend((rects1[0], rects2[0], rects3[0]), ('angle', 'rms T-R-aligned', 'rms T-R-S-aligned'))
+ax.legend((rects1[0], rects2[0], rects3[0]), ('angle', 'position T-R-aligned', 'position T-R-S-aligned'))
 
 autolabel(rects1,0)
 autolabel(rects2,0)
@@ -166,12 +177,12 @@ rects2 = ax.bar(ind, [109, 125, 116, 98], width, color='orange', error_kw=dict(e
 
 # add some text for labels, title and axes ticks
 ax.set_ylabel('[%]')
-ax.set_title('Results compared to OKVIS, rotation fixed')
+ax.set_title('Our approach vs. OKVIS - rotation locked', fontsize=16)
 ax.set_xticks(ind + width/2)
-ax.set_xticklabels(('Laborit away', 'Laborit close', 'Quarry', 'HG 15'))
+ax.set_xticklabels(('Laborit \n away', 'Laborit \n close', 'Quarry', 'HG'), fontsize=16)
 ax.set_ylim((0, 600))
 ax.axhline(y=100, xmin=0, xmax=10, linewidth=2, color = 'green')
-ax.legend((rects1[0], rects2[0]), ('angle', 'rms T-R-aligned'))
+ax.legend((rects1[0], rects2[0]), ('angle', 'position T-R-aligned'))
 ax.set_xlim(xlim)
 
 autolabel(rects1,0)
