@@ -9,17 +9,24 @@ import math
 import plot_time
 from sklearn import linear_model, datasets
 
+abs_val_legend = True;
+
+if abs_val_legend:
+    fig_width = 14
+else:
+    fig_width = 10
+
 
 def autolabel(rects, n, add_value=[]):
     """
     Attach a text label above each bar displaying its height
     """
-    if rects.__len__() == add_value.__len__():
+    if rects.__len__() == add_value.__len__() and abs_val_legend:
         for rect, val in zip(rects, add_value):
             height = rect.get_height()
-            if not np.isnan(height) or height == 0:
+            if not (np.isnan(height) or height == 0):
                 ax.text(rect.get_x() + rect.get_width()/2., 1.03 * height,
-                        ('%1.' + str(n) + 'f') % height + '\n(' + val + ')',
+                        ('%1.' + str(n) + 'f') % height + '\n' + val + '',
                         ha='center', va='bottom')
     else:
         for rect in rects:
@@ -122,7 +129,7 @@ ax2.legend(loc=0)
 ind = np.arange(6) + 0.85  # the x locations for the groups
 width = 0.28  # the width of the bars
 
-fig3, ax = plt.subplots(figsize=(10,6))
+fig3, ax = plt.subplots(figsize=(fig_width,6))
 #data from experiments_1, run 32
 rects1 = ax.bar(ind - width, [496, 484, 109, 0, 0, 0], width, color='b', error_kw=dict(ecolor='black'))
 rects2 = ax.bar(ind, [110, 122, 124, 93, 157, 107], width, color='orange', error_kw=dict(ecolor='black'))
@@ -138,14 +145,14 @@ ax.set_ylim((0, 600))
 ax.axhline(y=100, xmin=0, xmax=10, linewidth=2, color = 'green')
 ax.legend((rects1[0], rects2[0], rects3[0]), ('angle', 'position T-R-aligned', 'position T-R-S-aligned'))
 
-autolabel(rects1,0)
-autolabel(rects2,0)
-autolabel(rects3,0)
+autolabel(rects1,0, ['1.2d', '1.6d', '1.2d', '', '', ''])
+autolabel(rects2,0, ['0.7m', '0.3m', '0.9m', '0.2m', '0.2m', '1.6m'])
+autolabel(rects3,0, ['0.1m', '0.1m', '0.2m', '0.1m', '0.1m', '0.9m'])
 xlim = ax.get_xlim()
 
 
 # results max TTA without scale aligned
-fig4, ax = plt.subplots(figsize=(10,6))
+fig4, ax = plt.subplots(figsize=(15,6))
 rects1 = ax.bar(ind - width, [496, 484, 109, 0, 0, 0], width, color='b', error_kw=dict(ecolor='black'))
 rects2 = ax.bar(ind, [110, 122, 124, 93, 157, 107], width, color='orange', error_kw=dict(ecolor='black'))
 
@@ -159,8 +166,8 @@ ax.axhline(y=100, xmin=0, xmax=10, linewidth=2, color = 'green')
 ax.legend((rects1[0], rects2[0]), ('angle', 'position T-R-aligned'))
 ax.set_xlim(xlim)
 
-autolabel(rects1,0)
-autolabel(rects2,0)
+autolabel(rects1,0, ['1.2d', '1.6d', '1.2d', '', '', ''])
+autolabel(rects2,0, ['0.7m', '0.3m', '0.9m', '0.2m', '0.2m', '1.6m'])
 
 
 
@@ -169,7 +176,7 @@ autolabel(rects2,0)
 ind = np.arange(6) + 0.85  # the x locations for the groups
 width = 0.28  # the width of the bars
 
-fig5, ax = plt.subplots(figsize=(10,6))
+fig5, ax = plt.subplots(figsize=(fig_width,6))
 #data from experiments_1, run 33
 rects1 = ax.bar(ind - width, [100, 100, 100, 0, 0, 0], width, color='b', error_kw=dict(ecolor='black'))
 rects2 = ax.bar(ind, [109, 125, 116, 98, 143, 107], width, color='orange', error_kw=dict(ecolor='black'))
@@ -185,14 +192,14 @@ ax.set_ylim((0, 600))
 ax.axhline(y=100, xmin=0, xmax=10, linewidth=2, color = 'green')
 ax.legend((rects1[0], rects2[0], rects3[0]), ('angle', 'position T-R-aligned', 'position T-R-S-aligned'))
 
-autolabel(rects1,0)
-autolabel(rects2,0)
-autolabel(rects3,0)
+autolabel(rects1,0, ['0.3d', '0.4d', '1.2d', '', '', ''])
+autolabel(rects2,0, ['0.6m', '0.3m', '0.8m', '0.3m', '0.2m', '1.6m'])
+autolabel(rects3,0, ['0.1m', '0.1m', '0.3m', '0.1m', '0.1m', '0.9m'])
 xlim = ax.get_xlim()
 
 
 # results max TTA without scale aligned
-fig6, ax = plt.subplots(figsize=(10,6))
+fig6, ax = plt.subplots(figsize=(fig_width,6))
 fig6.set_size_inches([10, 6])
 rects1 = ax.bar(ind - width, [100, 100, 100, 0, 0, 0], width, color='b', error_kw=dict(ecolor='black'))
 rects2 = ax.bar(ind, [109, 125, 116, 98, 143, 107], width, color='orange', error_kw=dict(ecolor='black'))
