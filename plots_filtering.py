@@ -218,5 +218,4 @@ autolabel(rects1,0)
 autolabel(rects2,0)
 
 
-plt.show()
-print
+#plt.show()
