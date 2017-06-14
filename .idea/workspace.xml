@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fc8fc0b-ca29-46db-b9fe-444eec0d42ff" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_filtering.py" afterPath="$PROJECT_DIR$/plots_filtering.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rename_blender_imgs.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rename_depth_imgs.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/criterion_eval.m" afterPath="$PROJECT_DIR$/criterion_eval.m" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,8 +23,8 @@
       <file leaf-file-name="reorder.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reorder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2955">
-              <caret line="197" column="78" lean-forward="false" selection-start-line="197" selection-start-column="78" selection-end-line="197" selection-end-column="78" />
+            <state relative-caret-position="1875">
+              <caret line="125" column="61" lean-forward="false" selection-start-line="125" selection-start-column="56" selection-end-line="125" selection-end-column="61" />
               <folding>
                 <element signature="e#84#94#0" expanded="true" />
               </folding>
@@ -56,8 +59,8 @@
       <file leaf-file-name="plots_filtering.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plots_filtering.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="220" column="1" lean-forward="false" selection-start-line="220" selection-start-column="1" selection-end-line="220" selection-end-column="1" />
+            <state relative-caret-position="85">
+              <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
               <folding>
                 <element signature="e#26#44#0" expanded="true" />
               </folding>
@@ -99,16 +102,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rename_blender_imgs.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rename_blender_imgs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="12" column="67" lean-forward="false" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="67" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="run_egms_existing_okvis.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_egms_existing_okvis.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -130,7 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_ok</find>
       <find>length</find>
       <find>mean</find>
       <find>egm_config</find>
@@ -160,6 +152,7 @@
       <find>0.7</find>
       <find>figsize=(10,6)</find>
       <find>figsize=(14,6)</find>
+      <find>run</find>
     </findStrings>
     <replaceStrings>
       <replace>deg</replace>
@@ -232,7 +225,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -261,6 +253,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -551,11 +544,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/rename_blender_imgs.py</url>
-          <line>31</line>
-          <option name="timeStamp" value="67" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/plot_results.py</url>
           <line>176</line>
@@ -852,13 +840,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/evaluate_ate_scale.py" />
-    <entry file="file://$PROJECT_DIR$/rename_depth_imgs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="4" column="68" lean-forward="false" selection-start-line="4" selection-start-column="68" selection-end-line="4" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/rename_depth_imgs.py" />
     <entry file="file:///usr/lib/python2.7/dist-packages/numpy/lib/npyio.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -906,16 +888,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="180" column="0" lean-forward="false" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reorder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2955">
-          <caret line="197" column="78" lean-forward="false" selection-start-line="197" selection-start-column="78" selection-end-line="197" selection-end-column="78" />
-          <folding>
-            <element signature="e#84#94#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -969,14 +941,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rename_blender_imgs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" column="67" lean-forward="false" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/rename_blender_imgs.py" />
     <entry file="file://$PROJECT_DIR$/plot_window_results.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
@@ -997,10 +962,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/reorder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1875">
+          <caret line="125" column="61" lean-forward="false" selection-start-line="125" selection-start-column="56" selection-end-line="125" selection-end-column="61" />
+          <folding>
+            <element signature="e#84#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/plots_filtering.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="220" column="1" lean-forward="false" selection-start-line="220" selection-start-column="1" selection-end-line="220" selection-end-column="1" />
+        <state relative-caret-position="85">
+          <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
           <folding>
             <element signature="e#26#44#0" expanded="true" />
           </folding>
