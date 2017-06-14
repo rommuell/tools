@@ -32,14 +32,13 @@ PI = math.pi
 i = 0
 N = 25
 R_0 = 0
-R_1 = 0
+R_1 = 50
 #path = "/media/rm/9480CE0280CDEB36/experiments_1/quarry7"
 #path = "/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2"
 path = "/media/rm/9480CE0280CDEB36/experiments_1/laborit3"
 #path = "/media/rm/9480CE0280CDEB36/experiments_1/HG_13"
 
 #path = "/media/rm/9480CE0280CDEB36/experiments_2/23_CAB"
-#path = "/media/rm/9480CE0280CDEB36/experiments_2/24_CAB"
 #path = "/media/rm/9480CE0280CDEB36/experiments_2/31_ST"
 
 path = path + "/l_"
@@ -68,6 +67,8 @@ for R in range(R_0, R_1 + 1):
     rms_pos_abs_p_all_scaled = []
     abs_p_last = []
     abs_a_last = []
+
+    traj_plot_data = []
 
     rec_paths = []
     matches_cnt = []
@@ -154,7 +155,22 @@ for R in range(R_0, R_1 + 1):
             k_tot += data_window_ok["opt_wind"].__len__() + 5
             path_eval = path_reopt + "evaluation" + str(j)
 
+        critlist_path = path_reopt + "criteriaList.txt"
+        groundtruth_path = path_reopt + "gt_e_pos.ply"
+        #groundtruth_path = "/home/rm/Desktop/gt_e_pos.ply"
 
+        if (os.path.exists(critlist_path) and os.path.exists(groundtruth_path)):
+            critlist = np.genfromtxt(critlist_path, delimiter=' ', names=True)
+            groundtruth = np.genfromtxt(groundtruth_path, delimiter=' ', names=None, skip_header=15) #np.genfromtxt(groundtruth_path, delimiter=' ', names=False, skip_header=15, skip_footer=1, dtype=float, usecols=3)
+
+            points = []
+            for x, y, trigg, crit, id1, id2 in zip(groundtruth[:,0], groundtruth[:,1], critlist["reopt1_optWind"], critlist["A_all_crit"], groundtruth[:,9], critlist["kf_id"]):
+                if id1 == id2:
+                    points.append((x, y, trigg, crit))
+                else:
+                    print "what`??"
+
+            traj_plot_data.append(points)
 
 
     N_dat = data_ok.dtype.__len__()
@@ -325,7 +341,32 @@ for R in range(R_0, R_1 + 1):
     # ax3.set_ylim((low, up))
     ax3.set_aspect(abs(x1-x0)/abs(y1-y0))
 
-    multipage(os.path.dirname(path) + "/" + str(R) + ".pdf")
+
+    fig4, ax = plt.subplots()
+
+    i = 0
+    gt_x=[]
+    gt_y=[]
+    cm = plt.get_cmap('gist_rainbow')
+    for run in traj_plot_data:
+        if i == 0:
+            for p in run:
+                gt_x.append(p[0])
+                gt_y.append(p[1])
+                #ax.scatter(p[0], p[1], color='black')
+
+        c = int(255 * i / traj_plot_data.__len__())
+        for p in run:
+            if p[2] > 1.0:
+                ax.scatter(p[0], p[1], color=cm(c))
+        i += 1
+
+    ax.plot(gt_x, gt_y, color="black")
+
+
+
     plt.show()
+    multipage(os.path.dirname(path) + "/" + str(R) + ".pdf")
+
     plt.close('all')
 
