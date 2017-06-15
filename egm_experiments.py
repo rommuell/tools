@@ -33,15 +33,13 @@ i = 0
 N = 25
 R_0 = 0
 R_1 = 50
-#path = "/media/rm/9480CE0280CDEB36/experiments_1/quarry7"
+path = "/media/rm/9480CE0280CDEB36/experiments_1/quarry7"
 #path = "/media/rm/9480CE0280CDEB36/experiments_1/laborit_away2"
-path = "/media/rm/9480CE0280CDEB36/experiments_1/laborit3"
+#path = "/media/rm/9480CE0280CDEB36/experiments_1/laborit3"
 #path = "/media/rm/9480CE0280CDEB36/experiments_1/HG_13"
 
 #path = "/media/rm/9480CE0280CDEB36/experiments_2/23_CAB"
 #path = "/media/rm/9480CE0280CDEB36/experiments_2/31_ST"
-
-path = path + "/l_"
 
 for R in range(R_0, R_1 + 1):
     median_reproj_err_ok = []
@@ -77,7 +75,7 @@ for R in range(R_0, R_1 + 1):
     k = 0 #number of keyframes that are reoptimized
     k_tot = 0 #number of keyframes including fist and second overlap
     for x in range(i, i + N):
-        rec_path = path + str(x) + "/reconstructions/"
+        rec_path = path + "/l_" + str(x) + "/reconstructions/"
 
         if not os.path.exists(rec_path):
             print "this reconstruction directory does not exist (i to N might be out of range)"
@@ -168,7 +166,7 @@ for R in range(R_0, R_1 + 1):
                 if id1 == id2:
                     points.append((x, y, trigg, crit))
                 else:
-                    print "what`??"
+                    print "ids not identical!"
 
             traj_plot_data.append(points)
 
@@ -344,28 +342,70 @@ for R in range(R_0, R_1 + 1):
 
     fig4, ax = plt.subplots()
 
-    i = 0
+    i_run = 0
     gt_x=[]
     gt_y=[]
     cm = plt.get_cmap('gist_rainbow')
     for run in traj_plot_data:
-        if i == 0:
+        if i_run == 0:
             for p in run:
                 gt_x.append(p[0])
                 gt_y.append(p[1])
                 #ax.scatter(p[0], p[1], color='black')
 
-        c = int(255 * i / traj_plot_data.__len__())
+        c = int(255 * i_run / traj_plot_data.__len__())
         for p in run:
             if p[2] > 1.0:
                 ax.scatter(p[0], p[1], color=cm(c))
-        i += 1
+        i_run += 1
 
     ax.plot(gt_x, gt_y, color="black")
 
+    plt.figure()
+    rows = cols = 5
+    i_run = 0;
+    for run in traj_plot_data:
+        r = int(np.floor(i_run/cols))
+        ax = plt.subplot2grid((rows,cols), (r, i_run - r * cols))
+        i_run += 1
+
+        max_x = min_x = max_y = min_y = 0
+
+        cpt = 0
+        for p in run:
+            cpt += 1
+            if cpt < 10: # drop the first ten because their ucertainty is very high, messes up the plot and is no important info
+                continue
 
 
-    plt.show()
+            if p[2] > 1:
+                color = 'red'
+            else:
+                color = 'blue'
+
+            r = p[3]*1e4 #scale up uncertainty
+            if r > 30: #dropped if visualization fails
+                continue
+            circle = plt.Circle((p[0], p[1]), r, color=color)
+
+            ax.add_artist(circle)
+
+            min_x = min(min_x, p[0])
+            min_y = min(min_y, p[1])
+            max_x = max(max_x, p[0])
+            max_y = max(max_y, p[1])
+
+        x_lim = (min_x, max_x)
+        y_lim = (min_y, max_y)
+        x_lim = (x_lim - np.mean(x_lim)) * 1.15 + np.mean(x_lim);
+        y_lim = (y_lim - np.mean(y_lim)) * 1.15 + np.mean(y_lim);
+
+        ax.set_xlim(x_lim)
+        ax.set_ylim(y_lim)
+        ax.set_aspect(1)
+
+
+    #plt.show()
     multipage(os.path.dirname(path) + "/" + str(R) + ".pdf")
 
     plt.close('all')

@@ -33,8 +33,8 @@
       <file leaf-file-name="plot_time.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plot_time.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="620">
+              <caret line="105" column="24" lean-forward="false" selection-start-line="105" selection-start-column="20" selection-end-line="105" selection-end-column="24" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
               </folding>
@@ -45,8 +45,8 @@
       <file leaf-file-name="egm_experiments.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/egm_experiments.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="368" column="0" lean-forward="false" selection-start-line="368" selection-start-column="0" selection-end-line="368" selection-end-column="0" />
+            <state relative-caret-position="316">
+              <caret line="408" column="0" lean-forward="false" selection-start-line="408" selection-start-column="0" selection-end-line="408" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -69,8 +69,8 @@
       <file leaf-file-name="plot_results.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plot_results.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="65" column="33" lean-forward="false" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="33" />
+            <state relative-caret-position="135">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -79,8 +79,8 @@
       <file leaf-file-name="plot_window_results.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plot_window_results.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" column="110" lean-forward="false" selection-start-line="38" selection-start-column="110" selection-end-line="38" selection-end-column="110" />
+            <state relative-caret-position="681">
+              <caret line="149" column="0" lean-forward="false" selection-start-line="149" selection-start-column="0" selection-end-line="150" selection-end-column="57" />
               <folding>
                 <element signature="e#80#98#0" expanded="true" />
               </folding>
@@ -121,15 +121,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>glob</find>
-      <find>ax2</find>
-      <find>shutil</find>
       <find>what</find>
       <find>ax1</find>
       <find>inpu</find>
       <find>median_reproj_err</find>
       <find>R</find>
-      <find>i</find>
       <find>x</find>
       <find>N</find>
       <find>matches_cnt</find>
@@ -151,6 +147,10 @@
       <find>path_reopt</find>
       <find>reopt_windows</find>
       <find>scatter</find>
+      <find>grid</find>
+      <find>1.05</find>
+      <find>path</find>
+      <find>i</find>
     </findStrings>
     <replaceStrings>
       <replace>deg</replace>
@@ -171,6 +171,7 @@
       <replace>figsize=(14,6)</replace>
       <replace>figsize=(fig_width,6)</replace>
       <replace>traj_plot_data</replace>
+      <replace>i_run</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -192,13 +193,13 @@
         <option value="$PROJECT_DIR$/rename_depth_imgs.py" />
         <option value="$PROJECT_DIR$/test_3d.py" />
         <option value="$PROJECT_DIR$/rename_blender_imgs.py" />
-        <option value="$PROJECT_DIR$/plot_results.py" />
         <option value="$PROJECT_DIR$/night_shift.py" />
         <option value="$PROJECT_DIR$/plot_time.py" />
         <option value="$PROJECT_DIR$/reorder.py" />
         <option value="$PROJECT_DIR$/run_egms_existing_okvis.py" />
         <option value="$PROJECT_DIR$/plot_window_results.py" />
         <option value="$PROJECT_DIR$/plots_filtering.py" />
+        <option value="$PROJECT_DIR$/plot_results.py" />
         <option value="$PROJECT_DIR$/egm_experiments.py" />
       </list>
     </option>
@@ -609,7 +610,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/egm_experiments.py</url>
-          <line>370</line>
+          <line>410</line>
           <option name="timeStamp" value="168" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -619,19 +620,24 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/egm_experiments.py</url>
-          <line>170</line>
+          <line>168</line>
           <option name="timeStamp" value="176" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/egm_experiments.py</url>
-          <line>368</line>
+          <line>408</line>
           <option name="timeStamp" value="178" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/egm_experiments.py</url>
+          <line>80</line>
+          <option name="timeStamp" value="185" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="184" />
+      <option name="time" value="186" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -894,14 +900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plot_results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="65" column="33" lean-forward="false" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_3d.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -921,16 +919,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rename_blender_imgs.py" />
-    <entry file="file://$PROJECT_DIR$/plot_window_results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="110" lean-forward="false" selection-start-line="38" selection-start-column="110" selection-end-line="38" selection-end-column="110" />
-          <folding>
-            <element signature="e#80#98#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/reorder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1800">
@@ -985,24 +973,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="160" column="0" lean-forward="false" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plot_time.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state relative-caret-position="620">
+          <caret line="105" column="24" lean-forward="false" selection-start-line="105" selection-start-column="20" selection-end-line="105" selection-end-column="24" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/plot_window_results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="681">
+          <caret line="149" column="0" lean-forward="false" selection-start-line="149" selection-start-column="0" selection-end-line="150" selection-end-column="57" />
+          <folding>
+            <element signature="e#80#98#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/egm_experiments.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="368" column="0" lean-forward="false" selection-start-line="368" selection-start-column="0" selection-end-line="368" selection-end-column="0" />
+        <state relative-caret-position="316">
+          <caret line="408" column="0" lean-forward="false" selection-start-line="408" selection-start-column="0" selection-end-line="408" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
